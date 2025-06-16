@@ -1,0 +1,32 @@
+/* #region Login Link */
+.loginLink,
+.registerLink {
+	text-align: center;
+	font-weight: 500;
+	font-size: 13px;
+	text-decoration: underline;
+	color: #ff6b08;
+}
+
+/* #endregion Login Link */
+
+/* #region Register Quote */
+.loginButton,
+.registerButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 130px;
+	height: 40px;
+	font-weight: 500;
+	font-size: 14px;
+	color: #242a37;
+	border: 1px solid #000;
+}
+.registerButton {
+	border: none;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+	color: #fff;
+	background-color: #ff6b08;
+}
+/* #endregion Register Quote */

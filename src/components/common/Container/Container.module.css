@@ -1,0 +1,19 @@
+.authContainer {
+	max-width: 360px;
+	padding: 0 20px;
+	margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+	.authContainer {
+		max-width: 832px;
+		padding: 0 32px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.authContainer {
+		max-width: 1300px;
+		padding: 0 16px;
+	}
+}

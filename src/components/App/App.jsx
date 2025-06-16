@@ -1,5 +1,10 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { lazy, Suspense } from 'react'
+import { useWindowWidth } from '../../contexts/WindowWidthContext.jsx'
+import RestrictedRoutes from '../closedRoutes/RestrictedRoutes.jsx'
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js'
+import PrivateRoutes from '../closedRoutes/PrivateRoutes.jsx'
 import Loader from '../common/Loader/Loader.jsx'
 const WelcomePage = lazy(() =>
 	import('../../pages/WelcomePage/WelcomePage.jsx')
@@ -19,15 +24,54 @@ const NotFoundPage = lazy(() =>
 )
 
 function App() {
+	const isLoggedIn = useSelector(selectIsLoggedIn)
+	const { windowWidth } = useWindowWidth()
 	return (
 		<>
 			<Suspense fallback={<Loader />}>
 				<Routes>
-					<Route path='/' element={<WelcomePage />} />
-					<Route path='/library' element={<LibraryPage />} />
-					<Route path='/statistics' element={<StatisticsPage />} />
-					<Route path='/login' element={<LoginPage />} />
-					<Route path='/register' element={<RegisterPage />} />
+					<Route
+						path='/'
+						element={
+							!isLoggedIn && windowWidth < 768 ? (
+								<WelcomePage />
+							) : (
+								<Navigate to='/register' />
+							)
+						}
+					/>
+					<Route
+						path='/library'
+						element={
+							<PrivateRoutes redirectTo='/login'>
+								<LibraryPage />
+							</PrivateRoutes>
+						}
+					/>
+					<Route
+						path='/statistics'
+						element={
+							<PrivateRoutes redirectTo='/login'>
+								<StatisticsPage />
+							</PrivateRoutes>
+						}
+					/>
+					<Route
+						path='/login'
+						element={
+							<RestrictedRoutes redirectTo='/library'>
+								<LoginPage />
+							</RestrictedRoutes>
+						}
+					/>
+					<Route
+						path='/register'
+						element={
+							<RestrictedRoutes redirectTo='/library'>
+								<RegisterPage />
+							</RestrictedRoutes>
+						}
+					/>
 					<Route path='*' element={<NotFoundPage />} />
 				</Routes>
 			</Suspense>

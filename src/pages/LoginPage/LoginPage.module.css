@@ -1,0 +1,10 @@
+.loginWrapper{
+	display: grid;
+	grid-template-columns: 1fr;
+
+}
+@media screen and (min-width: 1280px) {
+	.loginWrapper {
+		grid-template-columns: 549px 1fr;
+	}
+}

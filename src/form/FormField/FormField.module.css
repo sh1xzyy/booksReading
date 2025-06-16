@@ -1,0 +1,49 @@
+/* Common Styles */
+.fieldWrapper,
+.libraryFieldWrapper {
+	position: relative;
+}
+
+/* Register and Login Field */
+
+.authLabel {
+	display: block;
+	font-weight: 600;
+	font-size: 14px;
+	color: #fff;
+	margin-bottom: 8px;
+	sup {
+		color: #f25137;
+	}
+}
+
+.authfield {
+	width: 100%;
+	height: 42px;
+	padding-left: 8px;
+	outline: transparent;
+	border: transparent;
+	box-shadow: inset 0 1px 2px 0 rgba(29, 29, 27, 0.15);
+	background-color: #f5f7fa;
+	&::placeholder {
+		font-weight: 400;
+		font-size: 14px;
+		color: #a6abb9;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.authfield {
+		padding-left: 12px;
+	}
+	.authLabel {
+		font-weight: 500;
+		color: #898f9f;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.authfield {
+		padding-left: 12px;
+	}
+}
