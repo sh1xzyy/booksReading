@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { lazy, Suspense } from 'react'
-import { useWindowWidth } from '../../contexts/WindowWidthContext.jsx'
 import RestrictedRoutes from '../closedRoutes/RestrictedRoutes.jsx'
 import { selectIsLoggedIn } from '../../redux/auth/selectors.js'
 import PrivateRoutes from '../closedRoutes/PrivateRoutes.jsx'
 import Loader from '../common/Loader/Loader.jsx'
+import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth.jsx'
 const WelcomePage = lazy(() =>
 	import('../../pages/WelcomePage/WelcomePage.jsx')
 )

@@ -1,25 +1,16 @@
-import { Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Form, Formik } from 'formik'
-import {
-	selectIsLoading,
-	selectIsLoggedIn,
-} from '../../../../redux/auth/selectors'
+import { useRegisterForm } from '../../../../features/auth/RegisterForm/useRegisterForm'
 import NavigationButton from '../../../common/NavigationButton/NavigationButton'
-import { useLoginForm } from '../../../../features/auth/LoginForm/useLoginForm'
 import ActionButton from '../../../common/ActionButton/ActionButton'
+import { selectIsLoading } from '../../../../redux/auth/selectors'
 import FormField from '../../../../form/FormField/FormField'
 import Loader from '../../../common/Loader/Loader'
-import s from './LoginForm.module.css'
+import s from './RegisterForm.module.css'
 
-const LoginForm = () => {
-	const { initialValues, validationSchema, handleSubmit } = useLoginForm()
-	const isLoggedIn = useSelector(selectIsLoggedIn)
+const RegisterForm = () => {
+	const { initialValues, validationSchema, handleSubmit } = useRegisterForm()
 	const isLoading = useSelector(selectIsLoading)
-
-	if (isLoggedIn) {
-		return <Navigate to='/library' />
-	}
 
 	return (
 		<>
@@ -40,6 +31,15 @@ const LoginForm = () => {
 							<FormField
 								classField='authfield'
 								classLabel='authLabel'
+								labelTitle='Ім’я '
+								name='name'
+								type='text'
+								placeholder='...'
+								isSup={true}
+							/>
+							<FormField
+								classField='authfield'
+								classLabel='authLabel'
 								labelTitle='Електронна адреса '
 								name='email'
 								type='email'
@@ -52,20 +52,32 @@ const LoginForm = () => {
 								labelTitle='Пароль '
 								name='password'
 								type='password'
-								placeholder='Пароль'
+								placeholder='...'
+								isSup={true}
+							/>
+							<FormField
+								classField='authfield'
+								classLabel='authLabel'
+								labelTitle='Підтвердити пароль '
+								name='confirmPassword'
+								type='password'
+								placeholder='...'
 								isSup={true}
 							/>
 						</div>
 						<ActionButton
-							className='loginSubmitButton'
+							className='registerSubmitButton'
 							type='submit'
-							title='Увійти'
+							title='Зареєструватися'
 						/>
-						<NavigationButton
-							className='registerLink'
-							to='/register'
-							title='Реєстрація'
-						/>
+						<p className={s.loginText}>
+							Вже з нами?&nbsp;
+							<NavigationButton
+								className='loginLink'
+								to='/login'
+								title='Увійти'
+							/>
+						</p>
 					</Form>
 				</Formik>
 			</div>
@@ -73,4 +85,4 @@ const LoginForm = () => {
 	)
 }
 
-export default LoginForm
+export default RegisterForm
