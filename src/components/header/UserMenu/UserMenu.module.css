@@ -1,0 +1,84 @@
+.nav {
+	display: flex;
+	align-items: center;
+}
+
+.navList {
+	position: relative;
+	display: flex;
+	align-items: center;
+	column-gap: 6px;
+	margin-right: 8px;
+	&::after {
+		position: absolute;
+		content: '';
+		top: 0;
+		right: -8px;
+		height: 100%;
+		width: 1px;
+		background-color: #e0e5eb;
+	}
+}
+.navLink {	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 33px;
+	height: 33px;
+	border-radius: 50%;
+	transition: background-color 250ms linear;
+	&.active {
+		background-color: #f5f7fa;
+	}
+}
+
+.userInfo,
+.userDesktopInfo {
+	display: flex;
+}
+.shortName {
+		font-weight: 600;
+		font-size: 14px;
+		color: #242a37;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 33px;
+		height: 33px;
+		border-radius: 50%;
+		margin-left: 14px;
+		background-color: #f5f7fa;
+	}
+
+.userDesktopInfo {
+	display: none;
+}
+
+@media screen and (min-width: 768px) {
+	.userDesktopInfo {
+		display: flex;
+		align-items: center;
+		margin-left: 92px;
+		column-gap: 12px;
+	}
+	.shortName {
+			margin: 0;
+		}
+		.userName {
+			font-weight: 300;
+			font-size: 14px;
+			color: #242a37;
+		}
+	.userInfo {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.navList {
+		margin-right: 6px;
+		&::after {
+			right: -6px;
+		}
+	}
+}

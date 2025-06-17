@@ -6,6 +6,7 @@ import { selectIsLoggedIn } from '../../redux/auth/selectors.js'
 import PrivateRoutes from '../closedRoutes/PrivateRoutes.jsx'
 import Loader from '../common/Loader/Loader.jsx'
 import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth.jsx'
+import AppBar from '../header/AppBar/AppBar.jsx'
 const WelcomePage = lazy(() =>
 	import('../../pages/WelcomePage/WelcomePage.jsx')
 )
@@ -28,6 +29,7 @@ function App() {
 	const { windowWidth } = useWindowWidth()
 	return (
 		<>
+			<AppBar />
 			<Suspense fallback={<Loader />}>
 				<Routes>
 					<Route

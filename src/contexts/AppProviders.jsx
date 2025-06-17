@@ -1,7 +1,12 @@
-import { WindowWidthProvider } from './WindowWidthContext/WindowWidthContext'
+import { ConfirmLogoutModalProvider } from './ConfirmLogoutModalContext/ConfirmLogoutModalProvider'
+import { WindowWidthProvider } from './WindowWidthContext/WindowWidthProvider'
 
 const AppProviders = ({ children }) => {
-	return <WindowWidthProvider>{children}</WindowWidthProvider>
+	return (
+		<ConfirmLogoutModalProvider>
+			<WindowWidthProvider>{children}</WindowWidthProvider>
+		</ConfirmLogoutModalProvider>
+	)
 }
 
 export default AppProviders

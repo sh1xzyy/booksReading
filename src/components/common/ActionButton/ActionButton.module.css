@@ -63,3 +63,70 @@
 	}
 }
 /* #endregion Auth Buttons */
+
+/* #region Logout Button */
+.logout {
+	font-weight: 300;
+	font-size: 14px;
+	color: #242a37;
+	text-decoration: underline;
+	margin-left: 14px;
+	border: none;
+	background-color: transparent;
+	transition: color 250ms linear;
+	&:hover {
+		color: #000000;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.logout {
+		margin-left: 8px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.logout {
+		margin-left: 14px;
+		line-height: 2.71;
+	}
+}
+/* #endregion Logout Button */
+
+/* #region Confirm Modal */
+.cancelButton,
+.confirmButton {
+	min-width: 98px;
+	height: 40px;
+	font-weight: 500;
+	font-size: 14px;
+	transition: background-color 250ms linear;
+}
+
+.cancelButton {
+	border: 1px solid #242a37;
+	color: #242a37;
+	background-color: transparent;
+	&:hover {
+		background-color: #d8dce9;
+	}
+}
+
+.confirmButton {
+	border: none;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+	color: #fff;
+	background-color: #ff6b08;
+	&:hover {
+		background-color: #d45704;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.cancelButton,
+	.confirmButton {
+		min-width: 130px;
+	}
+}
+
+/* #endregion Confirm Modal */
