@@ -1,0 +1,29 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	row-gap: 40px;
+}
+
+.fields {
+	display: grid;
+	gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+	.fields {
+		grid-template-columns: 1fr 0.5fr 0.5fr;
+		gap: 24px 32px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.form {
+		flex-direction: row;
+		align-items: flex-end;
+		column-gap: 48px;
+	}
+	.fields {
+		grid-template-columns: 346px 250px 134px 134px;
+		gap: 16px;
+	}
+}

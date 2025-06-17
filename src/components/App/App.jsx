@@ -7,6 +7,7 @@ import PrivateRoutes from '../closedRoutes/PrivateRoutes.jsx'
 import Loader from '../common/Loader/Loader.jsx'
 import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth.jsx'
 import AppBar from '../header/AppBar/AppBar.jsx'
+import { useGlobalLoader } from '../hooks/useGlobalLoader/useGlobalLoader.jsx'
 const WelcomePage = lazy(() =>
 	import('../../pages/WelcomePage/WelcomePage.jsx')
 )
@@ -27,8 +28,11 @@ const NotFoundPage = lazy(() =>
 function App() {
 	const isLoggedIn = useSelector(selectIsLoggedIn)
 	const { windowWidth } = useWindowWidth()
+	const isLoading = useGlobalLoader()
+
 	return (
 		<>
+			{isLoading && <Loader />}
 			<AppBar />
 			<Suspense fallback={<Loader />}>
 				<Routes>

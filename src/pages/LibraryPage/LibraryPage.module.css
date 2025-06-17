@@ -1,0 +1,15 @@
+.libraryPageWrapper {
+	padding: 80px 0 128px 0;
+}
+
+@media screen and (min-width: 768px) {
+	.libraryPageWrapper {
+		padding: 92px 0 61px 0;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.libraryPageWrapper {
+		padding-top: 100px;
+	}
+}

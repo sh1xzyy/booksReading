@@ -1,3 +1,20 @@
 .authSection {
 	padding-top: 60px;
 }
+
+.formSection {
+	position: relative;
+	padding: 48px 0;
+}
+
+@media screen and (min-width: 768px) {
+	.formSection {
+		padding: 0 0 20px 0;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.formSection {
+		padding-bottom: 64px;
+	}
+}

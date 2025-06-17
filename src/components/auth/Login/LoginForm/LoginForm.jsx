@@ -1,21 +1,16 @@
 import { Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Form, Formik } from 'formik'
-import {
-	selectIsLoading,
-	selectIsLoggedIn,
-} from '../../../../redux/auth/selectors'
+import { selectIsLoggedIn } from '../../../../redux/auth/selectors'
 import NavigationButton from '../../../common/NavigationButton/NavigationButton'
 import { useLoginForm } from '../../../../features/auth/LoginForm/useLoginForm'
 import ActionButton from '../../../common/ActionButton/ActionButton'
-import FormField from '../../../../form/FormField/FormField'
-import Loader from '../../../common/Loader/Loader'
 import s from './LoginForm.module.css'
+import FormField from '../../../common/form/FormField/FormField'
 
 const LoginForm = () => {
 	const { initialValues, validationSchema, handleSubmit } = useLoginForm()
 	const isLoggedIn = useSelector(selectIsLoggedIn)
-	const isLoading = useSelector(selectIsLoading)
 
 	if (isLoggedIn) {
 		return <Navigate to='/library' />
@@ -23,7 +18,6 @@ const LoginForm = () => {
 
 	return (
 		<>
-			{isLoading && <Loader />}
 			<div className={s.formWrapper}>
 				<Formik
 					initialValues={initialValues}

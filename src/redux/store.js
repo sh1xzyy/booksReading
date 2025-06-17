@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from './auth/slice'
+import bookReducer from './book/slice'
 import {
 	persistStore,
 	persistReducer,
@@ -23,6 +24,7 @@ const persistAuthReducer = persistReducer(persistConfig, authReducer)
 export const store = configureStore({
 	reducer: {
 		auth: persistAuthReducer,
+		book: bookReducer,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({

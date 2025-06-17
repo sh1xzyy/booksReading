@@ -1,20 +1,16 @@
-import { useSelector } from 'react-redux'
 import { Form, Formik } from 'formik'
 import { useRegisterForm } from '../../../../features/auth/RegisterForm/useRegisterForm'
 import NavigationButton from '../../../common/NavigationButton/NavigationButton'
 import ActionButton from '../../../common/ActionButton/ActionButton'
-import { selectIsLoading } from '../../../../redux/auth/selectors'
-import FormField from '../../../../form/FormField/FormField'
+import FormField from '../../../common/form/FormField/FormField'
 import Loader from '../../../common/Loader/Loader'
 import s from './RegisterForm.module.css'
 
 const RegisterForm = () => {
 	const { initialValues, validationSchema, handleSubmit } = useRegisterForm()
-	const isLoading = useSelector(selectIsLoading)
 
 	return (
 		<>
-			{isLoading && <Loader />}
 			<div className={s.formWrapper}>
 				<Formik
 					initialValues={initialValues}

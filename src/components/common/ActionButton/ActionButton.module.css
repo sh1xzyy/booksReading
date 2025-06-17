@@ -128,5 +128,62 @@
 		min-width: 130px;
 	}
 }
-
 /* #endregion Confirm Modal */
+
+/* #region Add Book Button*/
+.addBookButton {
+	display: block;
+	margin: 0 auto;
+	min-width: 171px;
+	height: 42px;
+	font-weight: 500;
+	font-size: 14px;
+	border: 1px solid #242a37;
+	color: #000;
+	background-color: #f6f7fb;
+	transition: background-color 250ms linear;
+	&:hover {
+		background-color: #e0e5eb;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.addBookButton {
+		min-width: 181px;
+		margin: 0;
+	}
+}
+/* #endregion Add Book Button*/
+
+/* #region Go Back Button */
+.goBackButton {
+	position: absolute;
+	top: 4px;
+	border: none;
+	background-color: transparent;
+	transition: background-color 250ms linear;
+	&::after {
+		position: absolute;
+		content: '';
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		opacity: 0;
+		background-color: #e0e5eb;
+		transition: opacity 250ms linear;
+		z-index: -1;
+	}
+	&:hover::after {
+		opacity: 1;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.goBackButton {
+		display: none;
+	}
+}
+/* #endregion Go Back Button */

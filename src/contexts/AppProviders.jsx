@@ -1,11 +1,14 @@
+import { BookFormModalProvider } from './BookFormModalContext/BookFormModalContext'
 import { ConfirmLogoutModalProvider } from './ConfirmLogoutModalContext/ConfirmLogoutModalProvider'
 import { WindowWidthProvider } from './WindowWidthContext/WindowWidthProvider'
 
 const AppProviders = ({ children }) => {
 	return (
-		<ConfirmLogoutModalProvider>
-			<WindowWidthProvider>{children}</WindowWidthProvider>
-		</ConfirmLogoutModalProvider>
+		<BookFormModalProvider>
+			<ConfirmLogoutModalProvider>
+				<WindowWidthProvider>{children}</WindowWidthProvider>
+			</ConfirmLogoutModalProvider>
+		</BookFormModalProvider>
 	)
 }
 
