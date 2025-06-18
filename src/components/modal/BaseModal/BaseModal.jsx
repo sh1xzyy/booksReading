@@ -1,15 +1,12 @@
 import clsx from 'clsx'
 import { handleOverlayClick } from '../../../utils/modal/handleOverlayClick'
 import s from './BaseModal.module.css'
-import { useEffect } from 'react'
+import { useDisableBodyScroll } from '../../hooks/useDisableBodyScroll/useDisableBodyScroll'
+import { useCloseModalByKeydown } from '../../hooks/useCloseModalByKeydown/useCloseModalByKeydown'
 
 const BaseModal = ({ children, className, isModalOpen }) => {
-	useEffect(() => {
-		const onKeydownClick = event => event.key === 'Escape' && isModalOpen(false)
-
-		addEventListener('keydown', onKeydownClick)
-		return () => removeEventListener('keydown', onKeydownClick)
-	}, [isModalOpen])
+	useDisableBodyScroll()
+	useCloseModalByKeydown(isModalOpen)
 
 	return (
 		<div

@@ -158,7 +158,7 @@
 /* #region Go Back Button */
 .goBackButton {
 	position: absolute;
-	top: 4px;
+	top: 24px;
 	border: none;
 	background-color: transparent;
 	transition: background-color 250ms linear;
@@ -282,3 +282,22 @@
 	}
 }
 /* #endregion Confirm Button */
+
+/* #region Modal Form Button */
+.openFormButton {
+	position: fixed;
+	left: 50%;
+	bottom: 12px;
+	transform: translateX(-50%);
+	width: 52px;
+	height: 52px;
+	border: none;
+	border-radius: 50%;
+	background-color: #ff6b08;
+	transition: background-color 250ms linear;
+	z-index: 1000;
+	&:hover {
+		background-color: #e95f03;
+	}
+}
+/* #endregion Modal Form Button */

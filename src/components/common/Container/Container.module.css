@@ -7,6 +7,10 @@
 	margin: 0 auto;
 }
 
+.authContainer {
+	max-width: 360px;
+}
+
 .authHeaderContainer,
 .headerContainer {
 	width: 100%;

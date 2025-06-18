@@ -1,15 +1,15 @@
-import s from './ActionFormModal.module.css'
-import AddBookForm from '../../book/form/AddBookForm/AddBookForm'
+import { useCloseModalByKeydown } from '../../hooks/useCloseModalByKeydown/useCloseModalByKeydown'
 import { useDisableBodyScroll } from '../../hooks/useDisableBodyScroll/useDisableBodyScroll'
+import Container from '../../common/Container/Container'
+import s from './ActionFormModal.module.css'
 
-const ActionFormModal = ({ type }) => {
+const ActionFormModal = ({ children, isModalOpen }) => {
 	useDisableBodyScroll()
+	useCloseModalByKeydown(isModalOpen)
 
 	return (
 		<div className={s.modalOverlay}>
-			<Container className='container'>
-				{type === 'addBookForm' ? <AddBookForm /> : null}
-			</Container>
+			<Container className='container'>{children}</Container>
 		</div>
 	)
 }

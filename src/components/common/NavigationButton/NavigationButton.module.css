@@ -39,3 +39,37 @@
 	color: #242a37;
 }
 /* #endregion Logo */
+
+/* #region My Training Button */
+.myTrainingButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 171px;
+	margin: 0 auto;
+	height: 42px;
+	border: none;
+	color: #ffffff;
+	background-color: #ff6b08;
+	transition: background-color 250ms linear;
+	&:hover {
+		background-color: #e95f03;
+	}
+}
+
+.myTrainingButton {
+	font-weight: 600;
+	font-size: 16px;
+	margin-top: 28px;
+}
+
+@media screen and (min-width: 768px) {
+	.myTrainingButton {
+		max-width: 200px;
+		height: 40px;
+		margin-top: 40px;
+	}
+}
+
+/* #endregion My Training Button */

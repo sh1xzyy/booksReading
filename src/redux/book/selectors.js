@@ -22,7 +22,7 @@ export const selectIsListEmpty = createSelector(
 		selectFinishedReadingBooks,
 	],
 	(...rest) => {
-		return Boolean([...rest].flat(1))
+		return [...rest].flat(1).length === 0
 	}
 )
 
