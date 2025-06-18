@@ -2,12 +2,16 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { lazy, Suspense } from 'react'
 import RestrictedRoutes from '../closedRoutes/RestrictedRoutes.jsx'
-import { selectIsLoggedIn } from '../../redux/auth/selectors.js'
+import {
+	selectIsLoggedIn,
+	selectIsRefreshing,
+} from '../../redux/auth/selectors.js'
 import PrivateRoutes from '../closedRoutes/PrivateRoutes.jsx'
 import Loader from '../common/Loader/Loader.jsx'
 import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth.jsx'
 import AppBar from '../header/AppBar/AppBar.jsx'
 import { useGlobalLoader } from '../hooks/useGlobalLoader/useGlobalLoader.jsx'
+import { useRefresh } from '../../features/auth/Refresh/useRefresh.js'
 const WelcomePage = lazy(() =>
 	import('../../pages/WelcomePage/WelcomePage.jsx')
 )
@@ -26,61 +30,67 @@ const NotFoundPage = lazy(() =>
 )
 
 function App() {
+	const isRefreshing = useSelector(selectIsRefreshing)
 	const isLoggedIn = useSelector(selectIsLoggedIn)
 	const { windowWidth } = useWindowWidth()
 	const isLoading = useGlobalLoader()
+	useRefresh(isLoggedIn)
 
 	return (
 		<>
-			{isLoading && <Loader />}
-			<AppBar />
-			<Suspense fallback={<Loader />}>
-				<Routes>
-					<Route
-						path='/'
-						element={
-							!isLoggedIn && windowWidth < 768 ? (
-								<WelcomePage />
-							) : (
-								<Navigate to='/register' />
-							)
-						}
-					/>
-					<Route
-						path='/library'
-						element={
-							<PrivateRoutes redirectTo='/login'>
-								<LibraryPage />
-							</PrivateRoutes>
-						}
-					/>
-					<Route
-						path='/statistics'
-						element={
-							<PrivateRoutes redirectTo='/login'>
-								<StatisticsPage />
-							</PrivateRoutes>
-						}
-					/>
-					<Route
-						path='/login'
-						element={
-							<RestrictedRoutes redirectTo='/library'>
-								<LoginPage />
-							</RestrictedRoutes>
-						}
-					/>
-					<Route
-						path='/register'
-						element={
-							<RestrictedRoutes redirectTo='/library'>
-								<RegisterPage />
-							</RestrictedRoutes>
-						}
-					/>
-					<Route path='*' element={<NotFoundPage />} />
-				</Routes>
-			</Suspense>
+			{isRefreshing ? null : (
+				<>
+					{isLoading && <Loader />}
+					<AppBar />
+					<Suspense fallback={<Loader />}>
+						<Routes>
+							<Route
+								path='/'
+								element={
+									!isLoggedIn && windowWidth < 768 ? (
+										<WelcomePage />
+									) : (
+										<Navigate to='/register' />
+									)
+								}
+							/>
+							<Route
+								path='/library'
+								element={
+									<PrivateRoutes redirectTo='/login'>
+										<LibraryPage />
+									</PrivateRoutes>
+								}
+							/>
+							<Route
+								path='/statistics'
+								element={
+									<PrivateRoutes redirectTo='/login'>
+										<StatisticsPage />
+									</PrivateRoutes>
+								}
+							/>
+							<Route
+								path='/login'
+								element={
+									<RestrictedRoutes redirectTo='/library'>
+										<LoginPage />
+									</RestrictedRoutes>
+								}
+							/>
+							<Route
+								path='/register'
+								element={
+									<RestrictedRoutes redirectTo='/library'>
+										<RegisterPage />
+									</RestrictedRoutes>
+								}
+							/>
+							<Route path='*' element={<NotFoundPage />} />
+						</Routes>
+					</Suspense>
+				</>
+			)}
 		</>
 	)
 }

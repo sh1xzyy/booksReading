@@ -1,5 +1,11 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit'
-import { loginThunk, logoutThunk, registerThunk } from './operations'
+import {
+	loginThunk,
+	logoutThunk,
+	refreshThunk,
+	registerThunk,
+	userDataThunk,
+} from './operations'
 
 const initialState = {
 	userData: {
@@ -38,8 +44,36 @@ const authSlice = createSlice({
 			.addCase(logoutThunk.fulfilled, () => {
 				return initialState
 			})
+			.addCase(refreshThunk.fulfilled, (state, action) => {
+				state.accessToken = action.payload.newAccessToken
+				state.refreshToken = action.payload.newRefreshToken
+				state.sid = action.payload.newSid
+				state.isRefreshing = false
+				state.isLoading = false
+			})
+			.addCase(refreshThunk.pending, state => {
+				state.isRefreshing = true
+				state.isLoading = true
+			})
+			.addCase(refreshThunk.rejected, state => {
+				state.isRefreshing = false
+				state.isLoading = false
+				state.isLoggedIn = false
+			})
+			.addCase(userDataThunk.fulfilled, (state, action) => {
+				state.userData = {
+					name: action.payload.name,
+					email: action.payload.email,
+				}
+				state.isLoading = false
+			})
 			.addMatcher(
-				isAnyOf(loginThunk.pending, registerThunk.pending, logoutThunk.pending),
+				isAnyOf(
+					loginThunk.pending,
+					registerThunk.pending,
+					logoutThunk.pending,
+					userDataThunk.pending
+				),
 				state => {
 					state.isLoading = true
 				}
@@ -48,7 +82,8 @@ const authSlice = createSlice({
 				isAnyOf(
 					loginThunk.rejected,
 					registerThunk.rejected,
-					logoutThunk.rejected
+					logoutThunk.rejected,
+					userDataThunk.rejected
 				),
 				state => {
 					state.isLoading = false
