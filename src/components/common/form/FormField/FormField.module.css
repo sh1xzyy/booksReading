@@ -115,3 +115,38 @@
 }
 
 /* #endregion Add Book Form Field */
+
+/* #region Add Book Review Field */
+
+.bookReviewLabel {
+	display: block;
+	font-weight: 500;
+	font-size: 16px;
+	color: #242a37;
+	margin-bottom: 8px;
+}
+
+.bookReviewTextarea {
+	display: block;
+	font-weight: 500;
+	font-size: 16px;
+	color: #242a37;
+	height: 170px;
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #a6abb9;
+	resize: none;
+	&::placeholder {
+		font-weight: 400;
+		font-size: 14px;
+		color: #a6abb9;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.bookReviewLabel {
+		margin-bottom: 12px;
+	}
+}
+
+/* #endregion Add Book Review Field */

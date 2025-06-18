@@ -8,6 +8,7 @@ const FormField = ({
 	labelTitle,
 	type,
 	name,
+	as,
 	placeholder,
 	classLabel,
 	classField,
@@ -32,6 +33,7 @@ const FormField = ({
 					className={s[classField]}
 					type={type}
 					name={name}
+					as={as}
 					id={fieldId}
 					placeholder={placeholder}
 				/>

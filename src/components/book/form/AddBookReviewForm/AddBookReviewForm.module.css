@@ -1,0 +1,32 @@
+.stars {
+	margin-bottom: 20px;
+}
+
+.emptyIcon,
+.fillIcon {
+	width: 17px;
+	height: 17px;
+}
+
+.fillIcon {
+	color: #ff6b08;
+}
+
+.textareaWrapper {
+	margin-bottom: 20px;
+}
+
+.buttonsWrapper {
+	display: flex;
+	justify-content: center;
+	column-gap: 16px;
+}
+
+@media screen and (min-width: 768px) {
+	.textareaWrapper {
+		margin-bottom: 28px;
+	}
+	.buttonsWrapper {
+		column-gap: 28px;
+	}
+}

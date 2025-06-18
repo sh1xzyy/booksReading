@@ -20,16 +20,16 @@
 	background-color: #fff;
 }
 
-/* BookFeedbackModal */
+/* BookReviewModal */
 
-.bookFeedbackModal {
+.bookReviewModal {
 	max-width: 280px;
 	max-height: 395px;
 	padding: 20px 20px 40px 20px;
 }
 
 @media screen and (min-width: 768px) {
-	.bookFeedbackModal {
+	.bookReviewModal {
 		max-width: 608px;
 		max-height: 399px;
 	}

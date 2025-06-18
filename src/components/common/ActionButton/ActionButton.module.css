@@ -187,3 +187,72 @@
 	}
 }
 /* #endregion Go Back Button */
+
+/* #region Summary Button */
+.summaryButton {
+	min-width: 127px;
+	height: 40px;
+	margin: 20px 0 0 18px;
+	font-weight: 500;
+	font-size: 14px;
+	color: #fff;
+	border: none;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+	background-color: #6d7a8d;
+	transition: background-color 250ms linear;
+	&:hover {
+		background-color: #4d5663;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.summaryButton {
+		min-width: 80px;
+		margin: 0;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.summaryButton {
+		min-width: 130px;
+	}
+}
+/* #endregion Summary Button */
+
+/* #region Review Modal */
+.reviewGoBackButton,
+.reviewSaveButton {
+	height: 40px;
+	min-width: 98px;
+	font-weight: 500;
+	font-size: 14px;
+	color: #242a37;
+	border: none;
+	transition: background-color 250ms linear;
+}
+
+.reviewGoBackButton {
+	border: 1px solid #242a37;
+	color: #242a37;
+	background-color: transparent;
+	&:hover {
+		background-color: #d8dce9;
+	}
+}
+
+.reviewSaveButton {
+	color: #fff;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+	background-color: #ff6b08;
+	&:hover {
+		background-color: #d45704;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.reviewGoBackButton,
+	.reviewSaveButton {
+		min-width: 130px;
+	}
+}
+/* #endregion Review Modal */

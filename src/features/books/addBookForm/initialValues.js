@@ -1,6 +1,6 @@
 export const initialValues = {
-    title: '',
-    author: '',
-    publishYear: '',
-    pagesTotal: '',
+	title: '',
+	author: '',
+	publishYear: '',
+	pagesTotal: '',
 }

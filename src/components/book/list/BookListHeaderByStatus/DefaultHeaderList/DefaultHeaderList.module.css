@@ -1,0 +1,7 @@
+@media screen and (min-width: 768px) {
+	.headerItem {
+		font-weight: 500;
+		font-size: 14px;
+		color: #898f9f;
+	}
+}

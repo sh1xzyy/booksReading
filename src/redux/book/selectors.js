@@ -7,13 +7,11 @@ const selectFinishedReadingBooks = state => state.book.finishedReading
 const reversedBooks = books => [...books].reverse()
 const sortedSelector = selector => createSelector(selector, reversedBooks)
 
-export const selectGoingToReadBooksSorted = sortedSelector(
-	selectGoingToReadBooks
-)
-export const selectCurrentlyReadingBooksSorted = sortedSelector(
+const selectGoingToReadBooksSorted = sortedSelector(selectGoingToReadBooks)
+const selectCurrentlyReadingBooksSorted = sortedSelector(
 	selectCurrentlyReadingBooks
 )
-export const selectFinishedReadingBooksSorted = sortedSelector(
+const selectFinishedReadingBooksSorted = sortedSelector(
 	selectFinishedReadingBooks
 )
 
@@ -25,5 +23,16 @@ export const selectIsListEmpty = createSelector(
 	],
 	(...rest) => {
 		return Boolean([...rest].flat(1))
+	}
+)
+
+export const selectBooks = createSelector(
+	[
+		selectGoingToReadBooksSorted,
+		selectCurrentlyReadingBooksSorted,
+		selectFinishedReadingBooksSorted,
+	],
+	(goingToRead, currentlyReading, finishedReading) => {
+		return { goingToRead, currentlyReading, finishedReading }
 	}
 )
