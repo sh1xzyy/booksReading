@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux'
+import { useWelcomeGuideModalContext } from '../../contexts/WelcomeGuideModalContext/useWelcomeGuideModalContext'
 import { useBookReviewModalContext } from '../../contexts/BookReviewModalContext/useBookReviewModalContext'
 import { useBookFormModalContext } from '../../contexts/BookFormModalContext/useBookFormModalContext'
 import BookReviewModal from '../../components/book/modal/BookReviewModal/BookReviewModal'
 import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth'
+import WelcomeGuide from '../../components/book/guide/WelcomeGuide/WelcomeGuide'
 import AddBookForm from '../../components/book/form/AddBookForm/AddBookForm'
 import ActionButton from '../../components/common/ActionButton/ActionButton'
 import { selectBooks, selectIsListEmpty } from '../../redux/book/selectors'
@@ -17,12 +19,13 @@ const LibraryPage = () => {
 		useSelector(selectBooks)
 	const { isBookReviewModalOpen } = useBookReviewModalContext()
 	const isListEmpty = useSelector(selectIsListEmpty)
+	const { isWelcomeGuideModalOpen } = useWelcomeGuideModalContext()
 	const { windowWidth } = useWindowWidth
 
 	return (
 		<>
 			{isBookReviewModalOpen && <BookReviewModal />}
-
+			{isListEmpty && isWelcomeGuideModalOpen && <WelcomeGuide />}
 			<div className={s.libraryPageWrapper}>
 				{windowWidth < 768 ? (
 					isListEmpty || isBookFormOpen ? (
