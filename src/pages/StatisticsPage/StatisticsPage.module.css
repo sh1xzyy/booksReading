@@ -1,0 +1,61 @@
+.pageLayout {
+	display: grid;
+	padding: 80px 0 58px 0;
+}
+
+.pageLayoutDefault {
+	grid-template-areas:
+		'goal'
+		'form'
+		'list'
+		'chart';
+}
+
+.goalArea {
+	grid-area: goal;
+}
+
+.timerArea {
+	grid-area: timer;
+}
+
+.resultsArea {
+	grid-area: results;
+}
+
+.listArea {
+	grid-area: list;
+}
+
+.chartArea {
+	grid-area: chart;
+}
+
+.trainingFormSection {
+	grid-area: form;
+}
+
+.emptySection {
+	grid-area: empty;
+}
+
+@media screen and (min-width: 768px) {
+	.pageLayout {
+		padding: 92px 0 49px 0;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.pageLayout {
+		padding: 100px 0 40px 0;
+		column-gap: 32px;
+		grid-template-columns: 928px 1fr;
+	}
+
+	.pageLayoutDefault {
+		grid-template-areas:
+			'form goal'
+			'list empty'
+			'chart empty';
+	}
+}

@@ -7,7 +7,9 @@ const selectFinishedReadingBooks = state => state.book.finishedReading
 const reversedBooks = books => [...books].reverse()
 const sortedSelector = selector => createSelector(selector, reversedBooks)
 
-const selectGoingToReadBooksSorted = sortedSelector(selectGoingToReadBooks)
+export const selectGoingToReadBooksSorted = sortedSelector(
+	selectGoingToReadBooks
+)
 const selectCurrentlyReadingBooksSorted = sortedSelector(
 	selectCurrentlyReadingBooks
 )

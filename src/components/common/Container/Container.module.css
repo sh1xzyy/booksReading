@@ -1,5 +1,6 @@
 .container,
 .authContainer,
+.innerContainer,
 .authHeaderContainer,
 .headerContainer {
 	max-width: 320px;
@@ -28,6 +29,7 @@
 
 @media screen and (min-width: 768px) {
 	.container,
+	.innerContainer,
 	.authHeaderContainer,
 	.headerContainer {
 		max-width: 768px;
@@ -43,11 +45,17 @@
 
 @media screen and (min-width: 1280px) {
 	.container,
+	.innerContainer,
 	.authContainer,
 	.authHeaderContainer,
-	.headerContainer {
+	.headerContainer,
+	.statisticsPageContainer {
 		max-width: 1280px;
 		padding: 0 16px;
+	}
+
+	.statisticsPageContainer {
+		margin: 0 auto;
 	}
 
 	.authContainer {

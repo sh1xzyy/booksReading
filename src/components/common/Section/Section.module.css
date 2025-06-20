@@ -11,10 +11,16 @@
 	.formSection {
 		padding: 0 0 20px 0;
 	}
+	.trainingFormSection {
+		padding: 20px 0;
+	}
 }
 
 @media screen and (min-width: 1280px) {
 	.formSection {
 		padding-bottom: 64px;
+	}
+	.trainingFormSection {
+		padding: 0 0 12px 0;
 	}
 }
