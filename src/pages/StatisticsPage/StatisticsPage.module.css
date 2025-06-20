@@ -11,6 +11,16 @@
 		'chart';
 }
 
+.pageLayoutTraining {
+	grid-template-areas:
+		'timer'
+		'goal'
+		'form'
+		'list'
+		'chart'
+		'results';
+}
+
 .goalArea {
 	grid-area: goal;
 }
@@ -31,7 +41,7 @@
 	grid-area: chart;
 }
 
-.trainingFormSection {
+.formArea {
 	grid-area: form;
 }
 
@@ -56,6 +66,13 @@
 		grid-template-areas:
 			'form goal'
 			'list empty'
+			'chart empty';
+	}
+
+	.pageLayoutTraining {
+		grid-template-areas:
+			'timer goal'
+			'list results'
 			'chart empty';
 	}
 }

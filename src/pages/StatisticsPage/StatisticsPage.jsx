@@ -9,11 +9,13 @@ import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth
 import { getLayoutClassByTraining } from '../../utils/trainingForm/getLayoutClassByTraining'
 import s from './StatisticsPage.module.css'
 import { useGetTrainingPlanForm } from '../../features/planning/getTrainingData/useGetTrainingPlanForm'
+import SidePanel from '../../components/sidePanel/SidePanel/SidePanel'
 
 const StatisticsPage = () => {
 	const { isTrainingFormModalOpen, setIsTrainingFormModalOpen } =
 		useTrainingFormModalContext()
 	const { windowWidth } = useWindowWidth()
+	const isTraining = false
 
 	useGetTrainingPlanForm()
 	return (
@@ -33,7 +35,13 @@ const StatisticsPage = () => {
 				</ActionButton>
 			)}
 			<Container className='statisticsPageContainer'>
-				<div className={getLayoutClassByTraining(s)}>
+				<div className={getLayoutClassByTraining(s, isTraining)}>
+					<Section className='goalSection' moduleClass={s.goalArea}>
+						<Container className='innerContainer'>
+							<SidePanel type='goalToRead' />
+						</Container>
+					</Section>
+
 					{windowWidth >= 768 && (
 						<Section className='trainingFormSection' moduleClass={s.formArea}>
 							<Container className='innerContainer'>

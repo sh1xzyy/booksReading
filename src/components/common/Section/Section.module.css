@@ -7,12 +7,19 @@
 	padding: 48px 0;
 }
 
+.goalSection {
+	padding-bottom: 10px;
+}
+
 @media screen and (min-width: 768px) {
 	.formSection {
 		padding: 0 0 20px 0;
 	}
 	.trainingFormSection {
 		padding: 20px 0;
+	}
+	.goalSection {
+		padding-bottom: 20px;
 	}
 }
 
