@@ -1,0 +1,52 @@
+.label {
+	font-weight: 500;
+	font-size: 12px;
+	color: #898f9f;
+}
+
+.authorFinished,
+.defaultAuthor,
+.description {
+	font-weight: 500;
+	font-size: 12px;
+	color: #242a37;
+}
+
+.defaultAuthor,
+.authorFinished {
+	max-width: 125px;
+}
+
+.infoRow {
+	display: grid;
+	grid-template-columns: 81px auto;
+}
+
+@media screen and (min-width: 768px) {
+	.infoRow {
+		grid-template-columns: auto;
+	}
+	.label {
+		display: none;
+	}
+	.authorFinished {
+		font-size: 14px;
+		max-width: 168px;
+	}
+	.defaultAuthor {
+		font-size: 14px;
+		max-width: 100px;
+	}
+	.description {
+		font-size: 14px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.authorFinished {
+		max-width: 300px;
+	}
+	.defaultAuthor {
+		max-width: 235px;
+	}
+}

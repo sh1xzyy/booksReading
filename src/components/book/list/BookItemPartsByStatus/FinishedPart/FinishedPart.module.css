@@ -14,7 +14,15 @@
 	color: #898f9f;
 }
 
+.infoRow {
+	display: grid;
+	grid-template-columns: 81px auto;
+}
+
 @media screen and (min-width: 768px) {
+	.infoRow {
+		grid-template-columns: auto;
+	}
 	.ratingWrapper {
 		display: flex;
 		align-items: center;

@@ -301,3 +301,109 @@
 	}
 }
 /* #endregion Modal Form Button */
+
+/* #region My Training Button */
+.myTrainingButton,
+.startTrainingButton {
+	display: block;
+	margin: 0 auto;
+	min-width: 171px;
+	height: 42px;
+	border: none;
+	color: #ffffff;
+	background-color: #ff6b08;
+	transition: background-color 250ms linear;
+	&:hover {
+		background-color: #e95f03;
+	}
+}
+
+.myTrainingButton {
+	font-weight: 600;
+	font-size: 16px;
+	margin-top: 28px;
+}
+
+.startTrainingButton {
+	font-weight: 500;
+	font-size: 14px;
+	margin-top: 32px;
+}
+
+@media screen and (min-width: 768px) {
+	.myTrainingButton {
+		min-width: 200px;
+		height: 40px;
+		margin-top: 40px;
+	}
+	.startTrainingButton {
+		margin-top: 40px;
+	}
+}
+
+/* #endregion My Training Button */
+
+/* #region Delete Button */
+.deleteButton,
+.mobileDeleteButton {
+	position: relative;
+	&::after {
+		position: absolute;
+		content: '';
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		opacity: 0;
+		background-color: #e0e5eb;
+		transition: opacity 250ms linear;
+		z-index: -1;
+	}
+	&:hover::after {
+		opacity: 1;
+	}
+}
+
+.deleteButton {
+	display: none;
+}
+
+.mobileDeleteButton {
+	position: absolute;
+	top: 20px;
+	right: 0;
+}
+
+@media screen and (min-width: 768px) {
+	.deleteButton {
+		display: block;
+	}
+	.mobileDeleteButton {
+		display: none;
+	}
+}
+/* #endregion Delete Button */
+
+/* region Add Results */
+.addResultButton {
+	min-width: 240px;
+	height: 40px;
+	font-weight: 600;
+	font-size: 16px;
+	text-align: center;
+	color: #fff;
+	background-color: #ff6b08;
+	transition: background-color 250ms linear;
+	&:hover {
+		background-color: #e95f03;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.addResultButton {
+		height: 42px;
+	}
+}
+/* endregion Add Results */

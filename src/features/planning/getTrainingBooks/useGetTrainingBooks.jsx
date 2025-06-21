@@ -1,8 +1,8 @@
-import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { planningThunk } from '../../../redux/planning/operations'
 
-export const useGetTrainingPlanForm = () => {
+export const useGetTrainingBooks = () => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {

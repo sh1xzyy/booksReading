@@ -11,6 +11,14 @@
 	padding-bottom: 10px;
 }
 
+.planningListSection {
+	padding: 10px 0 16px 0;
+}
+
+.resultsSection {
+	padding-top: 32px;
+}
+
 @media screen and (min-width: 768px) {
 	.formSection {
 		padding: 0 0 20px 0;
@@ -21,6 +29,12 @@
 	.goalSection {
 		padding-bottom: 20px;
 	}
+	.planningListSection {
+		padding: 20px 0;
+	}
+	.resultsSection {
+		padding-top: 40px;
+	}
 }
 
 @media screen and (min-width: 1280px) {
@@ -29,5 +43,8 @@
 	}
 	.trainingFormSection {
 		padding: 0 0 12px 0;
+	}
+	.planningListSection {
+		padding: 12px 0 20px 0;
 	}
 }

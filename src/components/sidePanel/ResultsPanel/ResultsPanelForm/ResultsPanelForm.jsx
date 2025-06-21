@@ -2,11 +2,11 @@ import { Form, Formik } from 'formik'
 import { useState } from 'react'
 import * as Yup from 'yup'
 import s from './ResultsPanelForm.module.css'
-import { useAddStatisticToLocalStorageContext } from '../../../../contexts/AddStatisticToLocalStorageContext/useAddStatisticToLocaleStorageContext'
 import CustomDatePicker from '../../../custom/DatePicker/CustomDatePicker/CustomDatePicker'
 import ErrorMsg from '../../../common/form/ErrorMsg/ErrorMsg'
 import FormField from '../../../common/form/FormField/FormField'
 import ActionButton from '../../../common/ActionButton/ActionButton'
+import { useUserProgressContext } from '../../../../contexts/UserProgressContext/useUserProgressContext'
 
 const initialValues = {
 	statDate: '',
@@ -15,10 +15,10 @@ const initialValues = {
 
 const ResultsPanelForm = () => {
 	const [hasUserStartDataChange, setHasUserStartDataChange] = useState(false)
-	const { onSubmit } = useAddStatisticToLocalStorageContext()
+	const { handleAddResult } = useUserProgressContext()
 
 	const handleSubmit = async (value, { resetForm }) => {
-		onSubmit(value)
+		handleAddResult(value)
 		resetForm()
 	}
 

@@ -1,13 +1,15 @@
 import { MdMenuBook } from 'react-icons/md'
-import { getItemClassByStatus } from '../../../../utils/book/getItemClassByStatus'
-import { getBookIconClass } from '../../../../utils/book/getBookIconClass'
+import PlanningCheckbox from '../BookItemPartsByStatus/Planning/PlanningCheckbox/PlanningCheckbox'
+import { useUserProgressContext } from '../../../../contexts/UserProgressContext/useUserProgressContext'
+import PlanningPart from '../BookItemPartsByStatus/Planning/PlanningPart/PlanningPart'
 import { getDetailsWrapperClass } from '../../../../utils/book/getDetailsWrapperClass'
-import { getTitleClass } from '../../../../utils/book/getTitleClass'
+import { getItemClassByStatus } from '../../../../utils/book/getItemClassByStatus'
 import { croppedTitleByWidth } from '../../../../utils/book/croppedTitleByWidth'
-import { getInfoListClass } from '../../../../utils/book/getInfoListClass'
-import { getAuthorClass } from '../../../../utils/book/getAuthorClass'
-import { croppedAuthorByWidth } from '../../../../utils/book/croppedAuthorByWidth'
 import FinishedPart from '../BookItemPartsByStatus/FinishedPart/FinishedPart'
+import { getBookIconClass } from '../../../../utils/book/getBookIconClass'
+import { getInfoListClass } from '../../../../utils/book/getInfoListClass'
+import DefaultPart from '../BookItemPartsByStatus/DefaultPart/DefaultPart'
+import EmptyPart from '../BookItemPartsByStatus/EmptyPart/EmptyPart'
 import s from './BookItem.module.css'
 
 const BookItem = ({ book, status, windowWidth }) => {
@@ -21,39 +23,39 @@ const BookItem = ({ book, status, windowWidth }) => {
 		feedback = '',
 	} = book || {}
 
+	const { isTraining } = useUserProgressContext()
+
 	return (
 		<li className={getItemClassByStatus(s, status)}>
-			<MdMenuBook className={getBookIconClass(s, status)} />
-			<div className={getDetailsWrapperClass(s, status)}>
-				<span className={getTitleClass(s, status)} title={title}>
-					{croppedTitleByWidth(title, windowWidth, status)}
-				</span>
-				<ul className={getInfoListClass(s, status)}>
-					<li>
-						<div className={s.infoRow}>
-							<span className={s.label}>Автор:</span>
-							<span className={getAuthorClass(s, status)} title={author}>
-								{croppedAuthorByWidth(author, windowWidth, status)}
-							</span>
-						</div>
-					</li>
-					<li>
-						<div className={s.infoRow}>
-							<span className={s.label}>Рік:</span>
-							<span className={s.description}>{publishYear}</span>
-						</div>
-					</li>
-					<li>
-						<div className={s.infoRow}>
-							<span className={s.label}>Стор.:</span>
-							<span className={s.description}>{pagesTotal}</span>
-						</div>
-					</li>
-					{status === 'finished' && (
-						<FinishedPart data={{ _id, rating, feedback }} />
-					)}
-				</ul>
-			</div>
+			{status === 'planning' && isTraining ? (
+				<PlanningCheckbox _id={_id} />
+			) : (
+				<MdMenuBook className={getBookIconClass(s, status)} />
+			)}
+			{status === 'empty' ? (
+				<EmptyPart />
+			) : (
+				<div className={getDetailsWrapperClass(s, status)}>
+					<span className={s.defaultTitle} title={title}>
+						{croppedTitleByWidth(title, windowWidth, status)}
+					</span>
+					<ul className={getInfoListClass(s, status)}>
+						<DefaultPart
+							data={{ author, publishYear, pagesTotal }}
+							status={status}
+							windowWidth={windowWidth}
+						/>
+
+						{status === 'planning' && !isTraining && (
+							<PlanningPart data={{ _id, rating, feedback }} />
+						)}
+
+						{status === 'finished' && (
+							<FinishedPart data={{ _id, rating, feedback }} />
+						)}
+					</ul>
+				</div>
+			)}
 		</li>
 	)
 }

@@ -1,14 +1,18 @@
 import { useSelector } from 'react-redux'
 import s from './GoalToReadPanel.module.css'
-import { getListClassName } from '../../../utils/goalToReadPanel/getListClassName'
-import { getCounterItemClassName } from '../../../utils/goalToReadPanel/getCounterItemClassName'
-import { getCounterClassName } from '../../../utils/goalToReadPanel/getCounterClassName'
-import { getCounterDescriptionClassName } from '../../../utils/goalToReadPanel/getCounterDescriptionClassName'
+import { getListClassName } from '../../../utils/sidePanel/goalToReadPanel/getListClassName'
+import { getCounterItemClassName } from '../../../utils/sidePanel/goalToReadPanel/getCounterItemClassName'
+import { getCounterClassName } from '../../../utils/sidePanel/goalToReadPanel/getCounterClassName'
+import { getCounterDescriptionClassName } from '../../../utils/sidePanel/goalToReadPanel/getCounterDescriptionClassName'
+import { useUserProgressContext } from '../../../contexts/UserProgressContext/useUserProgressContext'
 import { selectPlannedData } from '../../../redux/planning/selectors'
 
 const GoalToReadPanel = () => {
 	const { plannedBooks, duration } = useSelector(selectPlannedData)
-	const isTraining = false
+	const { isTraining, checkedItemList } = useUserProgressContext()
+
+	const getBooksLeft = () =>
+		plannedBooks?.length - (checkedItemList?.length || 0)
 
 	return (
 		<>
@@ -41,7 +45,7 @@ const GoalToReadPanel = () => {
 						<li>
 							<div className={getCounterItemClassName(s, isTraining)}>
 								<span className={getCounterClassName(s, isTraining)}>
-									{duration || '0'}
+									{getBooksLeft(plannedBooks, checkedItemList)}
 								</span>
 							</div>
 							<span className={getCounterDescriptionClassName(s, isTraining)}>
