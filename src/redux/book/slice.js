@@ -19,8 +19,8 @@ const bookSlice = createSlice({
 				state.isLoading = false
 			})
 			.addCase(addBookReviewThunk.fulfilled, (state, action) => {
-				state.userBooks.finishedReading = state.finishedReading.filter(
-					book => book._id !== action.payload._id
+				state.finishedReading = state.finishedReading.map(book =>
+					book._id === action.payload._id ? action.payload : book
 				)
 				state.isLoading = false
 			})

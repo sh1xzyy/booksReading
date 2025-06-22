@@ -12,7 +12,7 @@ export const addResult = value => {
 
 	const updateStatistics = [
 		...(prev.statistics || []),
-		{ ...value, statTime: currentTime },
+		{ ...value, time: currentTime },
 	]
 
 	const updated = {

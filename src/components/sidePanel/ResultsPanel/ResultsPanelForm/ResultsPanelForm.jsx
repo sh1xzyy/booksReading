@@ -1,31 +1,16 @@
 import { Form, Formik } from 'formik'
 import { useState } from 'react'
-import * as Yup from 'yup'
-import s from './ResultsPanelForm.module.css'
+import { useAddBookStatistic } from '../../../../features/planning/addBookStatistic/useAddBookStatistic'
 import CustomDatePicker from '../../../custom/DatePicker/CustomDatePicker/CustomDatePicker'
-import ErrorMsg from '../../../common/form/ErrorMsg/ErrorMsg'
-import FormField from '../../../common/form/FormField/FormField'
 import ActionButton from '../../../common/ActionButton/ActionButton'
-import { useUserProgressContext } from '../../../../contexts/UserProgressContext/useUserProgressContext'
-
-const initialValues = {
-	statDate: '',
-	statPages: '',
-}
+import FormField from '../../../common/form/FormField/FormField'
+import ErrorMsg from '../../../common/form/ErrorMsg/ErrorMsg'
+import s from './ResultsPanelForm.module.css'
 
 const ResultsPanelForm = () => {
 	const [hasUserStartDataChange, setHasUserStartDataChange] = useState(false)
-	const { handleAddResult } = useUserProgressContext()
-
-	const handleSubmit = async (value, { resetForm }) => {
-		handleAddResult(value)
-		resetForm()
-	}
-
-	const validationSchema = Yup.object().shape({
-		statDate: Yup.string().required('Оберіть дату'),
-		statPages: Yup.number().max(5000, 'Максимум 5000').required(`Обов'язково`),
-	})
+	const { initialValues, validationSchema, handleSubmit } =
+		useAddBookStatistic()
 
 	return (
 		<Formik
@@ -41,15 +26,15 @@ const ResultsPanelForm = () => {
 							<CustomDatePicker
 								hasUserDataChange={hasUserStartDataChange}
 								setHasUserDataChange={setHasUserStartDataChange}
-								name='statDate'
+								name='date'
 								className='resultsDatePicker'
 								placeholder='Date'
 							/>
-							<ErrorMsg name='statDate' />
+							<ErrorMsg name='date' />
 						</div>
 					</label>
 					<FormField
-						name='statPages'
+						name='pages'
 						type='number'
 						placeholder='0'
 						classField='resultsField'

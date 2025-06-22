@@ -1,19 +1,26 @@
 import { useSelector } from 'react-redux'
 import { GoPlus } from 'react-icons/go'
+import { lazy, Suspense } from 'react'
 import { useTrainingFormModalContext } from '../../contexts/TrainingFormModalContext/useTrainingFormModalContext'
 import { useUserProgressContext } from '../../contexts/UserProgressContext/useUserProgressContext'
 import { useGetTrainingBooks } from '../../features/planning/getTrainingBooks/useGetTrainingBooks'
 import { getLayoutClassByTraining } from '../../utils/trainingForm/getLayoutClassByTraining'
-import ActionFormModal from '../../components/modal/ActionFormModal/ActionFormModal'
 import TrainingForm from '../../components/training/form/TrainingForm/TrainingForm'
 import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth'
 import ActionButton from '../../components/common/ActionButton/ActionButton'
-import SidePanel from '../../components/sidePanel/SidePanel/SidePanel'
 import Container from '../../components/common/Container/Container'
 import BookList from '../../components/book/list/BookList/BookList'
 import { selectPlannedData } from '../../redux/planning/selectors'
 import Section from '../../components/common/Section/Section'
+import Loader from '../../components/common/Loader/Loader'
 import s from './StatisticsPage.module.css'
+const SidePanel = lazy(() =>
+	import('../../components/sidePanel/SidePanel/SidePanel')
+)
+const ActionFormModal = lazy(() =>
+	import('../../components/modal/ActionFormModal/ActionFormModal')
+)
+const TimerBlock = lazy(() => import('../../components/TimerBlock/TimerBlock'))
 
 const StatisticsPage = () => {
 	const { isTrainingFormModalOpen, setIsTrainingFormModalOpen } =
@@ -27,9 +34,11 @@ const StatisticsPage = () => {
 	return (
 		<>
 			{isTrainingFormModalOpen && (
-				<ActionFormModal>
-					<TrainingForm />
-				</ActionFormModal>
+				<Suspense fallback={<Loader />}>
+					<ActionFormModal>
+						<TrainingForm />
+					</ActionFormModal>
+				</Suspense>
 			)}
 
 			{windowWidth < 768 && !isTrainingFormModalOpen && (
@@ -44,11 +53,23 @@ const StatisticsPage = () => {
 
 			<Container className='statisticsPageContainer'>
 				<div className={getLayoutClassByTraining(s, isTraining)}>
-					<Section className='goalSection' moduleClass={s.goalArea}>
-						<Container className='innerContainer'>
-							<SidePanel type='goalToRead' />
-						</Container>
-					</Section>
+					{isTraining && (
+						<Suspense fallback={<Loader />}>
+							<Section className='timerSection' moduleClass={s.timerArea}>
+								<Container className='innerContainer'>
+									<TimerBlock />
+								</Container>
+							</Section>
+						</Suspense>
+					)}
+
+					<Suspense fallback={<Loader />}>
+						<Section className='goalSection' moduleClass={s.goalArea}>
+							<Container className='innerContainer'>
+								<SidePanel type='goalToRead' />
+							</Container>
+						</Section>
+					</Suspense>
 
 					{windowWidth >= 768 && !isTraining && (
 						<Section className='trainingFormSection' moduleClass={s.formArea}>
@@ -83,6 +104,8 @@ const StatisticsPage = () => {
 							</Container>
 						</Section>
 					)}
+
+					<Section className='emptySection' moduleClass={s.emptyArea} />
 				</div>
 			</Container>
 		</>

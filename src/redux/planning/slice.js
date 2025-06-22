@@ -7,7 +7,10 @@ const initialState = {
 	duration: '',
 	pagesPerDay: '',
 	plannedBooks: [],
-	stats: [],
+	stats: {
+		date: '',
+		pagesCount: '',
+	},
 	isLoading: false,
 }
 
@@ -33,6 +36,9 @@ const planningSlice = createSlice({
 						state.startDate = payload.startDate
 						state.endDate = payload.endDate
 						state.pagesPerDay = payload.pagesPerDay
+						break
+					case 'PATCH':
+						state.stats = payload.stats
 						break
 					default:
 						throw new Error('Sorry you used the wrong HTTP method!')

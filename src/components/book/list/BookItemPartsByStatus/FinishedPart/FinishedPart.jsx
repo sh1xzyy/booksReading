@@ -6,6 +6,10 @@ import s from './FinishedPart.module.css'
 
 const FinishedPart = ({ data: { _id, rating, feedback } }) => {
 	const { setModalData, setIsBookReviewModalOpen } = useBookReviewModalContext()
+	console.log('rating', rating)
+	console.log('feedback', feedback)
+	console.log('id', _id)
+
 	return (
 		<li className={s.ratingWrapper}>
 			<div className={s.infoRow}>

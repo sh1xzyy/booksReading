@@ -10,7 +10,7 @@ export const useLoginForm = () => {
 	const handleSubmit = async (value, { resetForm }) => {
 		try {
 			await dispatch(loginThunk(value)).unwrap()
-			toast.success('You have successfully logged in')
+			toast.success('Ви успішно увійшли в систему!')
 		} catch (error) {
 			toast.error(error)
 		} finally {

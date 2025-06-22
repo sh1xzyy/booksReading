@@ -1,13 +1,11 @@
 import { useSelector } from 'react-redux'
 import { GoPlus } from 'react-icons/go'
+import { lazy, Suspense } from 'react'
 import { useWelcomeGuideModalContext } from '../../contexts/WelcomeGuideModalContext/useWelcomeGuideModalContext'
 import { useBookReviewModalContext } from '../../contexts/BookReviewModalContext/useBookReviewModalContext'
 import { useBookFormModalContext } from '../../contexts/BookFormModalContext/useBookFormModalContext'
-import BookReviewModal from '../../components/book/modal/BookReviewModal/BookReviewModal'
-import { useGlobalLoader } from '../../components/hooks/useGlobalLoader/useGlobalLoader'
 import NavigationButton from '../../components/common/NavigationButton/NavigationButton'
 import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth'
-import WelcomeGuide from '../../components/book/guide/WelcomeGuide/WelcomeGuide'
 import AddBookForm from '../../components/book/form/AddBookForm/AddBookForm'
 import ActionButton from '../../components/common/ActionButton/ActionButton'
 import { selectBooks, selectIsListEmpty } from '../../redux/book/selectors'
@@ -16,30 +14,49 @@ import BookList from '../../components/book/list/BookList/BookList'
 import Section from '../../components/common/Section/Section'
 import Loader from '../../components/common/Loader/Loader'
 import s from './LibraryPage.module.css'
-import ActionFormModal from '../../components/modal/ActionFormModal/ActionFormModal'
+import { useGlobalLoader } from '../../components/hooks/useGlobalLoader/useGlobalLoader'
+const ActionFormModal = lazy(() =>
+	import('../../components/modal/ActionFormModal/ActionFormModal')
+)
+const BookReviewModal = lazy(() =>
+	import('../../components/book/modal/BookReviewModal/BookReviewModal')
+)
+const WelcomeGuide = lazy(() =>
+	import('../../components/book/guide/WelcomeGuide/WelcomeGuide')
+)
 
 const LibraryPage = () => {
-	const { isBookFormOpen, setIsBookFormOpen } = useBookFormModalContext()
 	const { goingToRead, currentlyReading, finishedReading } =
 		useSelector(selectBooks)
+	const { isBookFormOpen, setIsBookFormOpen } = useBookFormModalContext()
 	const { isBookReviewModalOpen } = useBookReviewModalContext()
-	const isListEmpty = useSelector(selectIsListEmpty)
 	const { isWelcomeGuideModalOpen } = useWelcomeGuideModalContext()
+	const isListEmpty = useSelector(selectIsListEmpty)
 	const { windowWidth } = useWindowWidth()
 	const isLoading = useGlobalLoader()
 
-	if (isLoading) return <Loader />
 	return (
 		<>
-			{}
-			{isBookReviewModalOpen && <BookReviewModal />}
-			{isListEmpty && isWelcomeGuideModalOpen && <WelcomeGuide />}
+			{isBookReviewModalOpen && (
+				<Suspense fallback={<Loader />}>
+					<BookReviewModal />
+				</Suspense>
+			)}
+
+			{isListEmpty && !isLoading && isWelcomeGuideModalOpen && (
+				<Suspense fallback={<Loader />}>
+					<WelcomeGuide />
+				</Suspense>
+			)}
+
 			<div className={s.libraryPageWrapper}>
 				{windowWidth < 768 ? (
 					isListEmpty || isBookFormOpen ? (
-						<ActionFormModal isModalOpen={setIsBookFormOpen}>
-							<AddBookForm />
-						</ActionFormModal>
+						<Suspense fallback={<Loader />}>
+							<ActionFormModal isModalOpen={setIsBookFormOpen}>
+								<AddBookForm />
+							</ActionFormModal>
+						</Suspense>
 					) : null
 				) : (
 					<Section className='formSection'>

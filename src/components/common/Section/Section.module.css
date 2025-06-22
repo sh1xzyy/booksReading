@@ -19,6 +19,10 @@
 	padding-top: 32px;
 }
 
+.timerSection {
+	padding-bottom: 40px;
+}
+
 @media screen and (min-width: 768px) {
 	.formSection {
 		padding: 0 0 20px 0;
@@ -35,6 +39,9 @@
 	.resultsSection {
 		padding-top: 40px;
 	}
+	.timerSection {
+		padding-bottom: 36px;
+	}
 }
 
 @media screen and (min-width: 1280px) {
@@ -46,5 +53,8 @@
 	}
 	.planningListSection {
 		padding: 12px 0 20px 0;
+	}
+	.timerSection {
+		padding-bottom: 22px;
 	}
 }
