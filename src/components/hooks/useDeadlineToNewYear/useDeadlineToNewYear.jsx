@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { calculateRemainingTimeToNewYear } from '../../../utils/timer/calculateRemainingTimeToNewYear'
 
-const useDeadlineToNewYear = () => {
+export const useDeadlineToNewYear = () => {
 	const [timeLeftToNewYear, setTimeLeftToNewYear] = useState(
 		calculateRemainingTimeToNewYear()
 	)
@@ -14,5 +14,3 @@ const useDeadlineToNewYear = () => {
 	}, [])
 	return { timeLeftToNewYear }
 }
-
-export default useDeadlineToNewYear

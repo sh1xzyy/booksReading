@@ -73,3 +73,28 @@
 }
 
 /* #endregion My Training Button */
+
+/* #region backToHome */
+.backToHome {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 190px;
+	height: 40px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 1.3;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+	border: 1px solid #ff6b08;
+	border-radius: 30px;
+	box-shadow: -15px 15px 20px 0 rgba(0, 0, 0, 0.1);
+	background: #ff6b08;
+	transition: background-color 250ms linear;
+	&:hover {
+		background-color: #e95f03;
+	}
+}
+/* #endregion My Training Button */

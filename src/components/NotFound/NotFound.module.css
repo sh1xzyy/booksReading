@@ -1,0 +1,27 @@
+.notFoundImage {
+	width: 100%;
+	max-width: 340px;
+	margin-bottom: 50px;
+}
+
+.notFoundTitle {
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 2;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
+	color: #565872;
+	margin-bottom: 47px;
+}
+
+@media screen and (min-width: 768px) {
+	.notFoundImage {
+		max-width: 590px;
+		margin-bottom: 90px;
+	}
+
+	.notFoundTitle {
+		font-weight: 600;
+		font-size: 17px;
+	}
+}
