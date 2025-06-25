@@ -7,10 +7,7 @@ const initialState = {
 	duration: '',
 	pagesPerDay: '',
 	plannedBooks: [],
-	stats: {
-		date: '',
-		pagesCount: '',
-	},
+	stats: [],
 	isLoading: false,
 }
 
@@ -29,6 +26,7 @@ const planningSlice = createSlice({
 						state.startDate = payload.planning.startDate
 						state.endDate = payload.planning.endDate
 						state.pagesPerDay = payload.planning.pagesPerDay
+						state.stats = payload.planning.stats
 						break
 					case 'POST':
 						state.plannedBooks = payload.books
@@ -36,6 +34,7 @@ const planningSlice = createSlice({
 						state.startDate = payload.startDate
 						state.endDate = payload.endDate
 						state.pagesPerDay = payload.pagesPerDay
+						state.stats = payload.stats
 						break
 					case 'PATCH':
 						state.stats = payload.stats

@@ -8,9 +8,10 @@ export const useDeleteTrainingPlan = () => {
 	const deleteBookFromPlan = async _id => {
 		try {
 			await dispatch(deleteTrainingBookThunk(_id)).unwrap()
-			toast.success('You have successfully delete a book plan!')
+			toast.success('Ви успішно видалили план книги!')
 		} catch (error) {
-			toast.error(error.message)
+			toast.error('Ви не можете видалити книгу, яку вже прочитали/читаєте')
+			console.log(error)
 		}
 	}
 

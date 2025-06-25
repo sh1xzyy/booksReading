@@ -14,6 +14,7 @@ import { selectPlannedData } from '../../redux/planning/selectors'
 import Section from '../../components/common/Section/Section'
 import Loader from '../../components/common/Loader/Loader'
 import s from './StatisticsPage.module.css'
+import CustomRechart from '../../components/custom/Recharts/CustomRechart/CustomRechart'
 const SidePanel = lazy(() =>
 	import('../../components/sidePanel/SidePanel/SidePanel')
 )
@@ -94,6 +95,12 @@ const StatisticsPage = () => {
 									onClick={() => handleStartTraining(true)}
 								/>
 							)}
+						</Container>
+					</Section>
+
+					<Section className='chartSection' moduleClass={s.chartArea}>
+						<Container className='innerContainer'>
+							<CustomRechart />
 						</Container>
 					</Section>
 

@@ -46,9 +46,7 @@ const BookItem = ({ book, status, windowWidth }) => {
 							windowWidth={windowWidth}
 						/>
 
-						{status === 'planning' && !isTraining && (
-							<PlanningPart data={{ _id, rating, feedback }} />
-						)}
+						{status === 'planning' && !isTraining && <PlanningPart _id={_id} />}
 
 						{status === 'finished' && (
 							<FinishedPart data={{ _id, rating, feedback }} />
