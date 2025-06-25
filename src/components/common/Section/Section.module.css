@@ -52,6 +52,9 @@
 	.formSection {
 		padding-bottom: 64px;
 	}
+	.goalSection {
+		padding-bottom: 0;
+	}
 	.trainingFormSection {
 		padding: 0 0 12px 0;
 	}

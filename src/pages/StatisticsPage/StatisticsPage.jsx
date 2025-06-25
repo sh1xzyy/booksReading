@@ -111,8 +111,6 @@ const StatisticsPage = () => {
 							</Container>
 						</Section>
 					)}
-
-					<Section className='emptySection' moduleClass={s.emptyArea} />
 				</div>
 			</Container>
 		</>

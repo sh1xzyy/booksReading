@@ -10,74 +10,72 @@ const RegisterForm = () => {
 	const { initialValues, validationSchema, handleSubmit } = useRegisterForm()
 
 	return (
-		<>
-			<div className={s.formWrapper}>
-				<Formik
-					initialValues={initialValues}
-					onSubmit={handleSubmit}
-					validationSchema={validationSchema}
-				>
-					<Form className={s.form}>
-						<ActionButton
-							className='googleButton'
-							type='button'
-							title='Google'
+		<div className={s.formWrapper}>
+			<Formik
+				initialValues={initialValues}
+				onSubmit={handleSubmit}
+				validationSchema={validationSchema}
+			>
+				<Form className={s.form}>
+					<ActionButton
+						className='registerGoogleButton'
+						type='button'
+						title='Google'
+					/>
+					<div className={s.fields}>
+						<FormField
+							classField='authfield'
+							classLabel='authLabel'
+							labelTitle='Ім’я '
+							name='name'
+							type='text'
+							placeholder='...'
+							isSup={true}
 						/>
-						<div className={s.fields}>
-							<FormField
-								classField='authfield'
-								classLabel='authLabel'
-								labelTitle='Ім’я '
-								name='name'
-								type='text'
-								placeholder='...'
-								isSup={true}
-							/>
-							<FormField
-								classField='authfield'
-								classLabel='authLabel'
-								labelTitle='Електронна адреса '
-								name='email'
-								type='email'
-								placeholder='your@email.com'
-								isSup={true}
-							/>
-							<FormField
-								classField='authfield'
-								classLabel='authLabel'
-								labelTitle='Пароль '
-								name='password'
-								type='password'
-								placeholder='...'
-								isSup={true}
-							/>
-							<FormField
-								classField='authfield'
-								classLabel='authLabel'
-								labelTitle='Підтвердити пароль '
-								name='confirmPassword'
-								type='password'
-								placeholder='...'
-								isSup={true}
-							/>
-						</div>
-						<ActionButton
-							className='registerSubmitButton'
-							type='submit'
-							title='Зареєструватися'
+						<FormField
+							classField='authfield'
+							classLabel='authLabel'
+							labelTitle='Електронна адреса '
+							name='email'
+							type='email'
+							placeholder='your@email.com'
+							isSup={true}
 						/>
-						<p className={s.loginText}>
-							Вже з нами?&nbsp;
-							<NavigationButton
-								className='loginLink'
-								to='/login'
-								title='Увійти'
-							/>
-						</p>
-					</Form>
-				</Formik>
-			</div>
-		</>
+						<FormField
+							classField='authfield'
+							classLabel='authLabel'
+							labelTitle='Пароль '
+							name='password'
+							type='password'
+							placeholder='...'
+							isSup={true}
+						/>
+						<FormField
+							classField='authfield'
+							classLabel='authLabel'
+							labelTitle='Підтвердити пароль '
+							name='confirmPassword'
+							type='password'
+							placeholder='...'
+							isSup={true}
+						/>
+					</div>
+					<ActionButton
+						className='registerSubmitButton'
+						type='submit'
+						title='Зареєструватися'
+					/>
+					<p className={s.loginText}>
+						Вже з нами?&nbsp;
+						<NavigationButton
+							className='loginLink'
+							to='/login'
+							title='Увійти'
+						/>
+					</p>
+				</Form>
+			</Formik>
+		</div>
 	)
 }
 

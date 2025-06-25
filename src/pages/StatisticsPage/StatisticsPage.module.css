@@ -45,10 +45,6 @@
 	grid-area: form;
 }
 
-.emptySection {
-	grid-area: empty;
-}
-
 @media screen and (min-width: 768px) {
 	.pageLayout {
 		padding: 92px 0 49px 0;
@@ -57,6 +53,7 @@
 
 @media screen and (min-width: 1280px) {
 	.pageLayout {
+		align-items: start;
 		padding: 100px 0 40px 0;
 		column-gap: 32px;
 		grid-template-columns: 928px 1fr;
@@ -65,14 +62,15 @@
 	.pageLayoutDefault {
 		grid-template-areas:
 			'form goal'
-			'list empty'
-			'chart empty';
+			'list goal'
+			'chart goal';
 	}
 
 	.pageLayoutTraining {
 		grid-template-areas:
 			'timer goal'
-			'list results'
-			'chart empty';
+			'form  results'
+			'list  results'
+			'chart results';
 	}
 }

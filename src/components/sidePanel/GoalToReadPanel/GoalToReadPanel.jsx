@@ -1,25 +1,24 @@
 import { useSelector } from 'react-redux'
-import s from './GoalToReadPanel.module.css'
-import { getListClassName } from '../../../utils/sidePanel/goalToReadPanel/getListClassName'
-import { getCounterItemClassName } from '../../../utils/sidePanel/goalToReadPanel/getCounterItemClassName'
-import { getCounterClassName } from '../../../utils/sidePanel/goalToReadPanel/getCounterClassName'
 import { getCounterDescriptionClassName } from '../../../utils/sidePanel/goalToReadPanel/getCounterDescriptionClassName'
+import { getCounterItemClassName } from '../../../utils/sidePanel/goalToReadPanel/getCounterItemClassName'
+import { getBookWrapperClassName } from '../../../utils/sidePanel/goalToReadPanel/getBookWrapperClassName'
 import { useUserProgressContext } from '../../../contexts/UserProgressContext/useUserProgressContext'
+import { getCounterClassName } from '../../../utils/sidePanel/goalToReadPanel/getCounterClassName'
+import { getListClassName } from '../../../utils/sidePanel/goalToReadPanel/getListClassName'
+import { getBooksLeft } from '../../../utils/sidePanel/goalToReadPanel/getBooksLeft'
 import { selectPlannedData } from '../../../redux/planning/selectors'
+import s from './GoalToReadPanel.module.css'
 
 const GoalToReadPanel = () => {
 	const { plannedBooks, duration } = useSelector(selectPlannedData)
 	const { isTraining, checkedItemList } = useUserProgressContext()
-
-	const getBooksLeft = () =>
-		plannedBooks?.length - (checkedItemList?.length || 0)
 
 	return (
 		<>
 			<div className={s.goalHeader}>
 				<h3 className={s.title}>Моя мета прочитати</h3>
 			</div>
-			<div className={s.countWrapper}>
+			<div className={getBookWrapperClassName(s, isTraining)}>
 				<ul className={getListClassName(s, isTraining)}>
 					<li>
 						<div className={getCounterItemClassName(s, isTraining)}>

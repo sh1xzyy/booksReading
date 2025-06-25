@@ -1,5 +1,6 @@
 /* #region Google Button */
-.googleButton {
+.googleButton,
+.registerGoogleButton {
 	position: relative;
 	font-family: 'Roboto', sans-serif;
 	display: block;
@@ -26,6 +27,10 @@
 	&:hover {
 		background-color: #f6f7fb;
 	}
+}
+
+.registerGoogleButton {
+	cursor: not-allowed;
 }
 /* #endregion Google Button */
 

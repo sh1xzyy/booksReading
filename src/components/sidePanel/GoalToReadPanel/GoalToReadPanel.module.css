@@ -126,4 +126,7 @@
 	.trainingCountList {
 		column-gap: 20px;
 	}
+	.trainingCountWrapper {
+		padding: 80px 18px;
+	}
 }

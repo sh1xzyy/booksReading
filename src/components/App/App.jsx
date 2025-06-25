@@ -12,6 +12,7 @@ import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth
 import AppBar from '../header/AppBar/AppBar.jsx'
 import { useGlobalLoader } from '../hooks/useGlobalLoader/useGlobalLoader.jsx'
 import { useRefresh } from '../../features/auth/Refresh/useRefresh.js'
+import GoogleAuthRedirect from '../../features/auth/GoogleAuthRedirect/GoogleAuthRedirect.jsx'
 const WelcomePage = lazy(() =>
 	import('../../pages/WelcomePage/WelcomePage.jsx')
 )
@@ -44,6 +45,7 @@ function App() {
 					<AppBar />
 					<Suspense fallback={<Loader />}>
 						<Routes>
+							<Route path='/google-auth' element={<GoogleAuthRedirect />} />
 							<Route
 								path='/'
 								element={

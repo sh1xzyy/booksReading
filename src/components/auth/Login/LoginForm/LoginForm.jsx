@@ -29,6 +29,11 @@ const LoginForm = () => {
 							className='googleButton'
 							type='button'
 							title='Google'
+							onClick={() => {
+								window.location.href = `${
+									import.meta.env.VITE_API_KEY
+								}auth/google`
+							}}
 						/>
 						<div className={s.fields}>
 							<FormField
