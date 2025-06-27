@@ -1,10 +1,10 @@
 import { Form, Formik } from 'formik'
 import { useState } from 'react'
-import { useAddBookStatistic } from '../../../../features/planning/addBookStatistic/useAddBookStatistic'
-import CustomDatePicker from '../../../custom/DatePicker/CustomDatePicker/CustomDatePicker'
-import ActionButton from '../../../common/ActionButton/ActionButton'
-import FormField from '../../../common/form/FormField/FormField'
-import ErrorMsg from '../../../common/form/ErrorMsg/ErrorMsg'
+import { useAddBookStatistic } from '../../../../../features/planning/addBookStatistic/useAddBookStatistic'
+import CustomDatePicker from '../../../../custom/DatePicker/CustomDatePicker/CustomDatePicker'
+import ActionButton from '../../../../common/ActionButton/ActionButton'
+import FormField from '../../../../common/form/FormField/FormField'
+import ErrorMsg from '../../../../common/form/ErrorMsg/ErrorMsg'
 import s from './ResultsPanelForm.module.css'
 
 const ResultsPanelForm = () => {

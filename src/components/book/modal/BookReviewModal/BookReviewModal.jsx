@@ -9,7 +9,7 @@ const BookReviewModal = () => {
 	return (
 		<BaseModal
 			className='bookReviewModal'
-			isModalOpen={setIsBookReviewModalOpen}
+			setIsModalOpen={setIsBookReviewModalOpen}
 		>
 			<h3 className={s.chooseRating}>Обрати рейтинг книги</h3>
 			<AddBookReviewForm />

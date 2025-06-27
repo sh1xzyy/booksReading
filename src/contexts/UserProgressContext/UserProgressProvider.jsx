@@ -4,6 +4,7 @@ import { startTraining } from '../../features/userProgress/startTraining'
 import { DEFAULT_PROGRESS } from '../../features/userProgress/constants'
 import { addResult } from '../../features/userProgress/addResult'
 import { UserProgressContext } from './useUserProgressContext'
+import { clearProgress } from '../../features/userProgress/clearProgress'
 
 export const UserProgressProvider = ({ children }) => {
 	const [userProgress, setUserProgress] = useState(DEFAULT_PROGRESS)
@@ -31,6 +32,10 @@ export const UserProgressProvider = ({ children }) => {
 		setUserProgress(updated)
 	}
 
+	const handleClearProgress = () => {
+		clearProgress()
+		setUserProgress(DEFAULT_PROGRESS)
+	}
 	return (
 		<UserProgressContext.Provider
 			value={{
@@ -41,6 +46,7 @@ export const UserProgressProvider = ({ children }) => {
 				handleStartTraining,
 				handleCheckboxToggle,
 				handleAddResult,
+				handleClearProgress,
 			}}
 		>
 			{children}

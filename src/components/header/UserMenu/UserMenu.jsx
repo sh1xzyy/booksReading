@@ -18,9 +18,7 @@ const UserMenu = () => {
 
 	return (
 		<>
-			{isConfirmLogoutModalOpen && (
-				<ConfirmLogoutModal isModalOpen={setIsConfirmLogoutModalOpen} />
-			)}
+			{isConfirmLogoutModalOpen && <ConfirmLogoutModal />}
 			<NavigationButton className='logo' to='/' title='BR' />
 			<div className={s.userDesktopInfo}>
 				<span className={s.shortName}>{formattedName(name)}</span>

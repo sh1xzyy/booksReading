@@ -55,3 +55,37 @@
 		max-height: 204px;
 	}
 }
+
+/* #region Training Result Modal */
+.trainingTimeoutModal,
+.trainingBookReadModal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 280px;
+}
+
+.trainingTimeoutModal {
+	max-height: 358px;
+	padding: 44px 22px;
+}
+
+.trainingBookReadModal {
+	padding: 40px 26px;
+	max-height: 256px;
+}
+
+@media screen and (min-width: 768px) {
+	.trainingTimeoutModal {
+		padding: 40px 29px 48px 29px;
+		max-width: 394px;
+		max-height: 286px;
+	}
+
+	.trainingBookReadModal {
+		padding: 40px 26px;
+		max-width: 394px;
+	}
+}
+/* #endregion Training Result Modal */

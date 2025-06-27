@@ -1,5 +1,5 @@
-import { useUserProgressContext } from '../../../../contexts/UserProgressContext/useUserProgressContext'
-import { datePrettier } from '../../../../utils/sidePanel/resultsPanel/datePrettier'
+import { useUserProgressContext } from '../../../../../contexts/UserProgressContext/useUserProgressContext'
+import { datePrettier } from '../../../../../utils/sidePanel/resultsPanel/datePrettier'
 import s from './ResultsStatisticsList.module.css'
 
 const ResultsStatisticsList = () => {

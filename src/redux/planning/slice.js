@@ -37,7 +37,7 @@ const planningSlice = createSlice({
 						state.stats = payload.stats
 						break
 					case 'PATCH':
-						state.stats = payload.stats
+						state.stats = payload.planning.stats
 						break
 					default:
 						throw new Error('Sorry you used the wrong HTTP method!')

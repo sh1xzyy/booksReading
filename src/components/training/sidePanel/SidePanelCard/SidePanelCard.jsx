@@ -1,10 +1,10 @@
-import { getWrapperClassByType } from '../../../utils/sidePanel/sidePanelCard/getWrapperClassByType'
-import { useUserProgressContext } from '../../../contexts/UserProgressContext/useUserProgressContext'
+import { useUserProgressContext } from '../../../../contexts/UserProgressContext/useUserProgressContext'
+import { getWrapperClassByType } from '../../../../utils/sidePanel/sidePanelCard/getWrapperClassByType'
 import ResultsPanelCard from '../ResultsPanel/ResultsPanelCard/ResultsPanelCard'
 import GoalToReadPanel from '../GoalToReadPanel/GoalToReadPanel'
-import s from './SidePanel.module.css'
+import s from './SidePanelCard.module.css'
 
-const SidePanel = ({ type }) => {
+const SidePanelCard = ({ type }) => {
 	const { isTraining } = useUserProgressContext()
 
 	return (
@@ -14,4 +14,4 @@ const SidePanel = ({ type }) => {
 	)
 }
 
-export default SidePanel
+export default SidePanelCard

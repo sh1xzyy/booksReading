@@ -1,13 +1,18 @@
+import { useConfirmLogoutModalContext } from '../../../contexts/ConfirmLogoutModalContext/useConfirmLogoutModalContext'
 import { useLogout } from '../../../features/auth/Logout/useLogout'
 import ActionButton from '../../common/ActionButton/ActionButton'
 import BaseModal from '../../modal/BaseModal/BaseModal'
 import s from './ConfirmLogoutModal.module.css'
 
-const ConfirmLogoutModal = ({ isModalOpen }) => {
+const ConfirmLogoutModal = () => {
+	const { setIsConfirmLogoutModalOpen } = useConfirmLogoutModalContext()
 	const { handleLogout } = useLogout()
 
 	return (
-		<BaseModal className='confirmLogoutModal' isModalOpen={isModalOpen}>
+		<BaseModal
+			className='confirmLogoutModal'
+			setIsModalOpen={setIsConfirmLogoutModalOpen}
+		>
 			<p className={s.title}>
 				Якщо Ви вийдете з програми незбережені дані будуть втрачені
 			</p>
@@ -16,7 +21,7 @@ const ConfirmLogoutModal = ({ isModalOpen }) => {
 					className='cancelButton'
 					type='button'
 					title='Відміна'
-					onClick={() => isModalOpen(false)}
+					onClick={() => setIsConfirmLogoutModalOpen(false)}
 				/>
 				<ActionButton
 					className='confirmButton'
@@ -24,7 +29,7 @@ const ConfirmLogoutModal = ({ isModalOpen }) => {
 					title='Вийти'
 					onClick={() => {
 						handleLogout()
-						isModalOpen(false)
+						setIsConfirmLogoutModalOpen(false)
 					}}
 				/>
 			</div>

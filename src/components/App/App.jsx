@@ -1,18 +1,18 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { lazy, Suspense } from 'react'
-import RestrictedRoutes from '../closedRoutes/RestrictedRoutes.jsx'
 import {
 	selectIsLoggedIn,
 	selectIsRefreshing,
 } from '../../redux/auth/selectors.js'
+import GoogleAuthRedirect from '../../features/auth/GoogleAuthRedirect/GoogleAuthRedirect.jsx'
+import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth.jsx'
+import { useGlobalLoader } from '../../hooks/useGlobalLoader/useGlobalLoader.jsx'
+import { useRefresh } from '../../features/auth/Refresh/useRefresh.js'
+import RestrictedRoutes from '../closedRoutes/RestrictedRoutes.jsx'
 import PrivateRoutes from '../closedRoutes/PrivateRoutes.jsx'
 import Loader from '../common/Loader/Loader.jsx'
-import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth.jsx'
 import AppBar from '../header/AppBar/AppBar.jsx'
-import { useGlobalLoader } from '../hooks/useGlobalLoader/useGlobalLoader.jsx'
-import { useRefresh } from '../../features/auth/Refresh/useRefresh.js'
-import GoogleAuthRedirect from '../../features/auth/GoogleAuthRedirect/GoogleAuthRedirect.jsx'
 const WelcomePage = lazy(() =>
 	import('../../pages/WelcomePage/WelcomePage.jsx')
 )

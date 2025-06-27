@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux'
 import { GoPlus } from 'react-icons/go'
 import { lazy, Suspense } from 'react'
+import { useUserTrainingProgressContext } from '../../contexts/UserTrainingProgressContext/useUserTrainingProgressContext'
 import { useTrainingFormModalContext } from '../../contexts/TrainingFormModalContext/useTrainingFormModalContext'
 import { useUserProgressContext } from '../../contexts/UserProgressContext/useUserProgressContext'
 import { useGetTrainingBooks } from '../../features/planning/getTrainingBooks/useGetTrainingBooks'
 import { getLayoutClassByTraining } from '../../utils/trainingForm/getLayoutClassByTraining'
-import TrainingForm from '../../components/training/form/TrainingForm/TrainingForm'
+import CustomRechart from '../../components/custom/Recharts/CustomRechart/CustomRechart'
 import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth'
+import TrainingForm from '../../components/training/TrainingForm/TrainingForm'
 import ActionButton from '../../components/common/ActionButton/ActionButton'
 import Container from '../../components/common/Container/Container'
 import BookList from '../../components/book/list/BookList/BookList'
@@ -14,18 +16,26 @@ import { selectPlannedData } from '../../redux/planning/selectors'
 import Section from '../../components/common/Section/Section'
 import Loader from '../../components/common/Loader/Loader'
 import s from './StatisticsPage.module.css'
-import CustomRechart from '../../components/custom/Recharts/CustomRechart/CustomRechart'
-const SidePanel = lazy(() =>
-	import('../../components/sidePanel/SidePanel/SidePanel')
+const SidePanelCard = lazy(() =>
+	import('../../components/training/sidePanel/SidePanelCard/SidePanelCard')
 )
 const ActionFormModal = lazy(() =>
 	import('../../components/modal/ActionFormModal/ActionFormModal')
 )
-const TimerBlock = lazy(() => import('../../components/TimerBlock/TimerBlock'))
+const TimersLayout = lazy(() =>
+	import('../../components/training/timer/TimersLayout/TimersLayout')
+)
+const TrainingResultModal = lazy(() =>
+	import(
+		'../../components/training/modal/TrainingResultModal/TrainingResultModal'
+	)
+)
 
 const StatisticsPage = () => {
 	const { isTrainingFormModalOpen, setIsTrainingFormModalOpen } =
 		useTrainingFormModalContext()
+	const { isTrainingTimeout, isBookReadModalOpen } =
+		useUserTrainingProgressContext()
 	const { isTraining, handleStartTraining } = useUserProgressContext()
 	const { plannedBooks } = useSelector(selectPlannedData)
 	const { windowWidth } = useWindowWidth()
@@ -39,6 +49,18 @@ const StatisticsPage = () => {
 					<ActionFormModal>
 						<TrainingForm />
 					</ActionFormModal>
+				</Suspense>
+			)}
+
+			{isTrainingTimeout && (
+				<Suspense fallback={<Loader />}>
+					<TrainingResultModal type='failure' />
+				</Suspense>
+			)}
+
+			{isBookReadModalOpen && (
+				<Suspense fallback={<Loader />}>
+					<TrainingResultModal type='completed' />
 				</Suspense>
 			)}
 
@@ -58,7 +80,7 @@ const StatisticsPage = () => {
 						<Suspense fallback={<Loader />}>
 							<Section className='timerSection' moduleClass={s.timerArea}>
 								<Container className='innerContainer'>
-									<TimerBlock />
+									<TimersLayout />
 								</Container>
 							</Section>
 						</Suspense>
@@ -67,7 +89,7 @@ const StatisticsPage = () => {
 					<Suspense fallback={<Loader />}>
 						<Section className='goalSection' moduleClass={s.goalArea}>
 							<Container className='innerContainer'>
-								<SidePanel type='goalToRead' />
+								<SidePanelCard type='goalToRead' />
 							</Container>
 						</Section>
 					</Suspense>
@@ -107,7 +129,7 @@ const StatisticsPage = () => {
 					{isTraining && (
 						<Section className='resultsSection' moduleClass={s.resultsArea}>
 							<Container className='innerContainer'>
-								<SidePanel type='results' />
+								<SidePanelCard type='results' />
 							</Container>
 						</Section>
 					)}

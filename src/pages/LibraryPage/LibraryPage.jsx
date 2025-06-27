@@ -6,6 +6,7 @@ import { useBookReviewModalContext } from '../../contexts/BookReviewModalContext
 import { useBookFormModalContext } from '../../contexts/BookFormModalContext/useBookFormModalContext'
 import NavigationButton from '../../components/common/NavigationButton/NavigationButton'
 import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth'
+import { useGlobalLoader } from '../../hooks/useGlobalLoader/useGlobalLoader'
 import AddBookForm from '../../components/book/form/AddBookForm/AddBookForm'
 import ActionButton from '../../components/common/ActionButton/ActionButton'
 import { selectBooks, selectIsListEmpty } from '../../redux/book/selectors'
@@ -14,7 +15,6 @@ import BookList from '../../components/book/list/BookList/BookList'
 import Section from '../../components/common/Section/Section'
 import Loader from '../../components/common/Loader/Loader'
 import s from './LibraryPage.module.css'
-import { useGlobalLoader } from '../../components/hooks/useGlobalLoader/useGlobalLoader'
 const ActionFormModal = lazy(() =>
 	import('../../components/modal/ActionFormModal/ActionFormModal')
 )

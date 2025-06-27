@@ -1,21 +1,26 @@
 import { nanoid } from '@reduxjs/toolkit'
 import clsx from 'clsx'
-import s from './PlanningCheckbox.module.css'
+import { useUserTrainingProgressContext } from '../../../../../../contexts/UserTrainingProgressContext/useUserTrainingProgressContext'
 import { useUserProgressContext } from '../../../../../../contexts/UserProgressContext/useUserProgressContext'
+import s from './PlanningCheckbox.module.css'
 const PlanningCheckbox = ({ _id }) => {
-	const id = nanoid()
 	const { checkedItemList, handleCheckboxToggle } = useUserProgressContext()
+	const { setIsBookReadModalOpen } = useUserTrainingProgressContext()
+	const checkboxId = nanoid()
 
 	return (
 		<div className={s.fieldWrapper}>
-			<label className={s.checkboxLabel} htmlFor={id}>
+			<label className={s.checkboxLabel} htmlFor={checkboxId}>
 				<input
 					className={clsx('visually-hidden', s.checkbox)}
 					type='checkbox'
 					name='checkbox'
 					checked={checkedItemList?.includes(_id)}
-					id={id}
-					onChange={e => handleCheckboxToggle(e.target.checked, _id)}
+					id={checkboxId}
+					onChange={e => {
+						handleCheckboxToggle(e.target.checked, _id)
+						setIsBookReadModalOpen(e.target.checked)
+					}}
 				/>
 				<span className={s.customCheckbox}></span>
 				<svg className={s.checkMark} width={12} height={12}>

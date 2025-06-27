@@ -1,5 +1,5 @@
-export const handleOverlayClick = (e, isModalOpen) => {
+export const handleOverlayClick = (e, setIsModalOpen) => {
 	if (e.target === e.currentTarget) {
-		isModalOpen(false)
+		setIsModalOpen(false)
 	}
 }
