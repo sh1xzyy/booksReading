@@ -5,7 +5,6 @@ import {
 	ResponsiveContainer,
 	CartesianGrid,
 	ReferenceLine,
-	XAxis,
 } from 'recharts'
 import { CustomDot } from '../CustomDot/CustomDot'
 import s from './CustomRechart.module.css'
@@ -38,7 +37,7 @@ const CustomRechart = () => {
 		<div className={s.chartWrapper}>
 			<div className={s.chartDescription}>
 				<span className={s.chartTitle}>Кількість сторінок / День</span>
-				<span className={s.pagesCount}>{pagesPerDay}</span>
+				<span className={s.pagesCount}>{pagesPerDay || 0}</span>
 			</div>
 
 			<ResponsiveContainer>

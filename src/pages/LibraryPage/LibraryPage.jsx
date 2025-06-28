@@ -51,7 +51,7 @@ const LibraryPage = () => {
 
 			<div className={s.libraryPageWrapper}>
 				{windowWidth < 768 ? (
-					isListEmpty || isBookFormOpen ? (
+					!isLoading && (isListEmpty || isBookFormOpen) ? (
 						<Suspense fallback={<Loader />}>
 							<ActionFormModal isModalOpen={setIsBookFormOpen}>
 								<AddBookForm />
@@ -70,7 +70,7 @@ const LibraryPage = () => {
 					<>
 						<div className={s.bookListWrapper}>
 							{finishedReading.length > 0 && (
-								<Section>
+								<Section className='bookListSection'>
 									<Container className='container'>
 										<BookList
 											sectionTitle='Прочитано'
@@ -82,7 +82,7 @@ const LibraryPage = () => {
 							)}
 
 							{currentlyReading.length > 0 && (
-								<Section>
+								<Section className='bookListSection'>
 									<Container className='container'>
 										<BookList
 											sectionTitle='Читаю'
@@ -94,7 +94,7 @@ const LibraryPage = () => {
 							)}
 
 							{goingToRead.length > 0 && (
-								<Section>
+								<Section className='bookListSection'>
 									<Container className='container'>
 										<BookList
 											sectionTitle='Маю намір прочитати'

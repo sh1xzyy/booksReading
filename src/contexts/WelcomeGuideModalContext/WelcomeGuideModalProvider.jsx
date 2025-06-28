@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { WelcomeGuideModalContext } from './useWelcomeGuideModalContext'
 
 export const WelcomeGuideModalProvider = ({ children }) => {
-	const [isWelcomeGuideModalOpen, setIsWelcomeGuideModalOpen] = useState(false)
+	const [isWelcomeGuideModalOpen, setIsWelcomeGuideModalOpen] = useState(true)
 
 	return (
 		<WelcomeGuideModalContext.Provider

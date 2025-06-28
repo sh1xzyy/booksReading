@@ -1,0 +1,25 @@
+.scrollWrapper {
+	height: 100vh;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	scrollbar-gutter: stable both-edges;
+}
+
+.scrollWrapper::-webkit-scrollbar {
+	width: 6px;
+}
+
+.scrollWrapper::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb {
+	background-color: rgba(120, 120, 120, 0.4);
+	border-radius: 3px;
+}
+
+.scrollWrapper {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(120, 120, 120, 0.4) transparent;
+}

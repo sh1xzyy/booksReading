@@ -13,6 +13,7 @@ import RestrictedRoutes from '../closedRoutes/RestrictedRoutes.jsx'
 import PrivateRoutes from '../closedRoutes/PrivateRoutes.jsx'
 import Loader from '../common/Loader/Loader.jsx'
 import AppBar from '../header/AppBar/AppBar.jsx'
+import ScrollBar from '../custom/ScrollBar/ScrollBar.jsx'
 const WelcomePage = lazy(() =>
 	import('../../pages/WelcomePage/WelcomePage.jsx')
 )
@@ -42,55 +43,57 @@ function App() {
 			{isRefreshing ? null : (
 				<>
 					{isLoading && <Loader />}
-					<AppBar />
-					<Suspense fallback={<Loader />}>
-						<Routes>
-							<Route path='/google-auth' element={<GoogleAuthRedirect />} />
-							<Route
-								path='/'
-								element={
-									!isLoggedIn && windowWidth < 768 ? (
-										<WelcomePage />
-									) : (
-										<Navigate to='/register' />
-									)
-								}
-							/>
-							<Route
-								path='/library'
-								element={
-									<PrivateRoutes redirectTo='/login'>
-										<LibraryPage />
-									</PrivateRoutes>
-								}
-							/>
-							<Route
-								path='/statistics'
-								element={
-									<PrivateRoutes redirectTo='/login'>
-										<StatisticsPage />
-									</PrivateRoutes>
-								}
-							/>
-							<Route
-								path='/login'
-								element={
-									<RestrictedRoutes redirectTo='/library'>
-										<LoginPage />
-									</RestrictedRoutes>
-								}
-							/>
-							<Route
-								path='/register'
-								element={
-									<RestrictedRoutes redirectTo='/library'>
-										<RegisterPage />
-									</RestrictedRoutes>
-								}
-							/>
-							<Route path='*' element={<NotFoundPage />} />
-						</Routes>
-					</Suspense>
+					<ScrollBar>
+						<AppBar />
+						<Suspense fallback={<Loader />}>
+							<Routes>
+								<Route path='/google-auth' element={<GoogleAuthRedirect />} />
+								<Route
+									path='/'
+									element={
+										!isLoggedIn && windowWidth < 768 ? (
+											<WelcomePage />
+										) : (
+											<Navigate to='/register' />
+										)
+									}
+								/>
+								<Route
+									path='/library'
+									element={
+										<PrivateRoutes redirectTo='/login'>
+											<LibraryPage />
+										</PrivateRoutes>
+									}
+								/>
+								<Route
+									path='/statistics'
+									element={
+										<PrivateRoutes redirectTo='/login'>
+											<StatisticsPage />
+										</PrivateRoutes>
+									}
+								/>
+								<Route
+									path='/login'
+									element={
+										<RestrictedRoutes redirectTo='/library'>
+											<LoginPage />
+										</RestrictedRoutes>
+									}
+								/>
+								<Route
+									path='/register'
+									element={
+										<RestrictedRoutes redirectTo='/library'>
+											<RegisterPage />
+										</RestrictedRoutes>
+									}
+								/>
+								<Route path='*' element={<NotFoundPage />} />
+							</Routes>
+						</Suspense>
+					</ScrollBar>
 				</>
 			)}
 		</>

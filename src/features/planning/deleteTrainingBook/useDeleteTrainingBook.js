@@ -11,7 +11,6 @@ export const useDeleteTrainingPlan = () => {
 			toast.success('Ви успішно видалили план книги!')
 		} catch (error) {
 			toast.error('Ви не можете видалити книгу, яку вже прочитали/читаєте')
-			console.log(error)
 		}
 	}
 

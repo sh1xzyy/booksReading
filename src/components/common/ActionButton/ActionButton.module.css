@@ -1,3 +1,7 @@
+/* #region Common styles */
+
+/* #endregion Common styles */
+
 /* #region Google Button */
 .googleButton,
 .registerGoogleButton {
@@ -110,7 +114,7 @@
 
 .cancelButton,
 .confirmButton {
-	min-width: 152px;
+	min-width: 98px;
 }
 
 .readyButton {
@@ -134,6 +138,13 @@
 	background-color: #ff6b08;
 	&:hover {
 		background-color: #d45704;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.confirmButton,
+	.cancelButton {
+		min-width: 152px;
 	}
 }
 

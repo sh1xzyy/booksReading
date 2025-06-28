@@ -2,6 +2,16 @@
 .planningHeaderList,
 .finishingHeaderList {
 	display: none;
+	animation: smooth-appearance 250ms linear;
+}
+
+@keyframes smooth-appearance {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @media screen and (min-width: 768px) {
