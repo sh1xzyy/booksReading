@@ -4,10 +4,12 @@ import toast from 'react-hot-toast'
 import { useEffect } from 'react'
 import { userDataThunk } from '../../../redux/auth/operations'
 import Loader from '../../../components/common/Loader/Loader'
+import { useTranslation } from 'react-i18next'
 
 const GoogleAuthRedirect = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+	const { t } = useTranslation()
 
 	useEffect(() => {
 		const query = new URLSearchParams(window.location.search)
@@ -30,12 +32,10 @@ const GoogleAuthRedirect = () => {
 				navigate('/library')
 			})
 		} else {
-			toast.error(
-				'Користувача не знайдено. Будь ласка, зареєструйтесь спочатку.'
-			)
+			toast.error(`${t('googleAuthToast')}`)
 			navigate('/login')
 		}
-	}, [dispatch, navigate])
+	}, [dispatch, t, navigate])
 
 	return <Loader />
 }

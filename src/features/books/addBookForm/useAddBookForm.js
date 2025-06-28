@@ -4,15 +4,17 @@ import { useBookFormModalContext } from '../../../contexts/BookFormModalContext/
 import { addBookThunk } from '../../../redux/book/operations'
 import { validationSchema } from './validationSchema'
 import { initialValues } from './initialValues'
+import { useTranslation } from 'react-i18next'
 
 export const useAddBookForm = () => {
 	const { setIsBookFormOpen } = useBookFormModalContext()
 	const dispatch = useDispatch()
+	const { t } = useTranslation()
 
 	const handleSubmit = async (values, { resetForm }) => {
 		try {
 			await dispatch(addBookThunk(values)).unwrap()
-			toast.success('Ви успішно додали книгу!')
+			toast.success(`${t('addBookFormSuccessToast')}`)
 			setIsBookFormOpen(false)
 		} catch (error) {
 			toast.error(error.message)

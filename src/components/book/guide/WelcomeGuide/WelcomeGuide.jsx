@@ -1,11 +1,12 @@
 import { useWelcomeGuideModalContext } from '../../../../contexts/WelcomeGuideModalContext/useWelcomeGuideModalContext'
 import ActionButton from '../../../common/ActionButton/ActionButton'
-import { guideSteps } from '../guideSteps/guideSteps'
+import { useGuideSteps } from '../useGuideSteps/useGuideSteps'
 import StepItem from '../StepItem/StepItem'
 import s from './WelcomeGuide.module.css'
 
 const WelcomeGuide = () => {
 	const { setIsWelcomeGuideModalOpen } = useWelcomeGuideModalContext()
+	const guideSteps = useGuideSteps()
 	return (
 		<div className={s.welcomeGuideWrapper}>
 			<div className={s.modal}>

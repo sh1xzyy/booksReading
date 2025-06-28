@@ -10,11 +10,13 @@ import ActionButton from '../../common/ActionButton/ActionButton'
 import { selectUserData } from '../../../redux/auth/selectors'
 import s from './UserMenu.module.css'
 import { useConfirmLogoutModalContext } from '../../../contexts/ConfirmLogoutModalContext/useConfirmLogoutModalContext'
+import { useTranslation } from 'react-i18next'
 
 const UserMenu = () => {
 	const { isConfirmLogoutModalOpen, setIsConfirmLogoutModalOpen } =
 		useConfirmLogoutModalContext()
 	const { name } = useSelector(selectUserData)
+	const { t } = useTranslation()
 
 	return (
 		<>
@@ -51,7 +53,7 @@ const UserMenu = () => {
 				<ActionButton
 					className='logout'
 					type='button'
-					title='Выход'
+					title={t('logoutButton')}
 					onClick={() => setIsConfirmLogoutModalOpen(true)}
 				/>
 			</nav>

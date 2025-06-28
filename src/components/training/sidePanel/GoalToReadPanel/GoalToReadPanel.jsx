@@ -8,15 +8,17 @@ import { getCounterClassName } from '../../../../utils/sidePanel/goalToReadPanel
 import { getBooksLeft } from '../../../../utils/sidePanel/goalToReadPanel/getBooksLeft'
 import { selectPlannedData } from '../../../../redux/planning/selectors'
 import s from './GoalToReadPanel.module.css'
+import { useTranslation } from 'react-i18next'
 
 const GoalToReadPanel = () => {
 	const { plannedBooks, duration } = useSelector(selectPlannedData)
 	const { isTraining, checkedItemList } = useUserProgressContext()
+	const { t } = useTranslation()
 
 	return (
 		<>
 			<div className={s.goalHeader}>
-				<h3 className={s.title}>Моя мета прочитати</h3>
+				<h3 className={s.title}>{t('goalToReadMyGoals')}</h3>
 			</div>
 			<div className={getBookWrapperClassName(s, isTraining)}>
 				<ul className={getListClassName(s, isTraining)}>
@@ -27,7 +29,7 @@ const GoalToReadPanel = () => {
 							</span>
 						</div>
 						<span className={getCounterDescriptionClassName(s, isTraining)}>
-							Кількість книжок
+							{t('goalToReadAmountBooks')}
 						</span>
 					</li>
 					<li>
@@ -37,7 +39,7 @@ const GoalToReadPanel = () => {
 							</span>
 						</div>
 						<span className={getCounterDescriptionClassName(s, isTraining)}>
-							Кількість днів
+							{t('goalToReadAmountDays')}
 						</span>
 					</li>
 					{isTraining && (
@@ -48,7 +50,7 @@ const GoalToReadPanel = () => {
 								</span>
 							</div>
 							<span className={getCounterDescriptionClassName(s, isTraining)}>
-								Залишилось книжок
+								{t('goalToReadBooksLeft')}
 							</span>
 						</li>
 					)}

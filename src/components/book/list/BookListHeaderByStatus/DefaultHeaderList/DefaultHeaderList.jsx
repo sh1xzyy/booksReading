@@ -1,12 +1,14 @@
+import { useTranslation } from 'react-i18next'
 import s from './DefaultHeaderList.module.css'
 
 const DefaultHeaderList = () => {
+	const { t } = useTranslation()
 	return (
 		<>
-			<li className={s.headerItem}>Назва книги</li>
-			<li className={s.headerItem}>Автор</li>
-			<li className={s.headerItem}>Рік</li>
-			<li className={s.headerItem}>Стор.</li>
+			<li className={s.headerItem}>{t('bookHeaderNameTitle')}</li>
+			<li className={s.headerItem}>{t('bookHeaderAuthorTitle')}</li>
+			<li className={s.headerItem}>{t('bookHeaderPublishYearTitle')}</li>
+			<li className={s.headerItem}>{t('bookHeaderPagesTotalTitle')}.</li>
 		</>
 	)
 }

@@ -1,12 +1,14 @@
+import { useTranslation } from 'react-i18next'
 import { useUserProgressContext } from '../../../../../contexts/UserProgressContext/useUserProgressContext'
 import { datePrettier } from '../../../../../utils/sidePanel/resultsPanel/datePrettier'
 import s from './ResultsStatisticsList.module.css'
 
 const ResultsStatisticsList = () => {
 	const { statistics } = useUserProgressContext()
+	const { t } = useTranslation()
 	return (
 		<div className={s.statisticsWrapper}>
-			<h3 className={s.statisticsTitle}>Статистика</h3>
+			<h3 className={s.statisticsTitle}>{t('resultsStatisticTitle')}</h3>
 			<ul className={s.statisticsList}>
 				{statistics.map(({ date, time, pages }, index) => (
 					<li key={index}>
@@ -20,7 +22,9 @@ const ResultsStatisticsList = () => {
 							<li className={s.item}>
 								<span className={s.statPages}>{pages}</span>
 								&nbsp;
-								<span className={s.statPagesLabel}>стор.</span>
+								<span className={s.statPagesLabel}>
+									{t('resultsPagesTitle')}
+								</span>
 							</li>
 						</ul>
 					</li>

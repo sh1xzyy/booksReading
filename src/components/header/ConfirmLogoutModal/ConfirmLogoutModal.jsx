@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useConfirmLogoutModalContext } from '../../../contexts/ConfirmLogoutModalContext/useConfirmLogoutModalContext'
 import { useLogout } from '../../../features/auth/Logout/useLogout'
 import ActionButton from '../../common/ActionButton/ActionButton'
@@ -7,26 +8,25 @@ import s from './ConfirmLogoutModal.module.css'
 const ConfirmLogoutModal = () => {
 	const { setIsConfirmLogoutModalOpen } = useConfirmLogoutModalContext()
 	const { handleLogout } = useLogout()
+	const { t } = useTranslation()
 
 	return (
 		<BaseModal
 			className='confirmLogoutModal'
 			setIsModalOpen={setIsConfirmLogoutModalOpen}
 		>
-			<p className={s.title}>
-				Якщо Ви вийдете з програми незбережені дані будуть втрачені
-			</p>
+			<p className={s.title}>{t('logoutModalTitle')}</p>
 			<div className={s.buttonsWrapper}>
 				<ActionButton
 					className='cancelButton'
 					type='button'
-					title='Відміна'
+					title={t('logoutModalCancelButton')}
 					onClick={() => setIsConfirmLogoutModalOpen(false)}
 				/>
 				<ActionButton
 					className='confirmButton'
 					type='button'
-					title='Вийти'
+					title={t('logoutModalGoOutButton')}
 					onClick={() => {
 						handleLogout()
 						setIsConfirmLogoutModalOpen(false)

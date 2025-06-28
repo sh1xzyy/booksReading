@@ -2,18 +2,20 @@ import { useDeadlineToSelectedData } from '../../../../hooks/useDeadlineToSelect
 import { useDeadlineToNewYear } from '../../../../hooks/useDeadlineToNewYear/useDeadlineToNewYear'
 import BaseTimer from '../BaseTimer/BaseTimer'
 import s from './TimersLayout.module.css'
+import { useTranslation } from 'react-i18next'
 
 const TimersLayout = () => {
-	const { timeLeftToNewYear } = useDeadlineToNewYear()
 	const { timeLeftToData } = useDeadlineToSelectedData()
+	const { timeLeftToNewYear } = useDeadlineToNewYear()
+	const { t } = useTranslation()
 
 	return (
 		<div className={s.timersGroup}>
 			<BaseTimer
 				timer={timeLeftToNewYear}
-				title='До закінчення року залишилось'
+				title={t('timerLeftToNewYearTitle')}
 			/>
-			<BaseTimer timer={timeLeftToData} title='До досягнення мети залишилось' />
+			<BaseTimer timer={timeLeftToData} title={t('timerLeftToData')} />
 		</div>
 	)
 }

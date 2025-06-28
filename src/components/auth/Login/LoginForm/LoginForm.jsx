@@ -5,12 +5,14 @@ import { selectIsLoggedIn } from '../../../../redux/auth/selectors'
 import NavigationButton from '../../../common/NavigationButton/NavigationButton'
 import { useLoginForm } from '../../../../features/auth/LoginForm/useLoginForm'
 import ActionButton from '../../../common/ActionButton/ActionButton'
-import s from './LoginForm.module.css'
 import FormField from '../../../common/form/FormField/FormField'
+import { useTranslation } from 'react-i18next'
+import s from './LoginForm.module.css'
 
 const LoginForm = () => {
 	const { initialValues, validationSchema, handleSubmit } = useLoginForm()
 	const isLoggedIn = useSelector(selectIsLoggedIn)
+	const { t } = useTranslation()
 
 	if (isLoggedIn) {
 		return <Navigate to='/library' />
@@ -26,7 +28,7 @@ const LoginForm = () => {
 				>
 					<Form className={s.form}>
 						<ActionButton
-							className='googleButton'
+							className='loginGoogleButton'
 							type='button'
 							title='Google'
 							onClick={() => {
@@ -39,7 +41,7 @@ const LoginForm = () => {
 							<FormField
 								classField='authfield'
 								classLabel='authLabel'
-								labelTitle='Електронна адреса '
+								labelTitle={t('loginEmailLabel')}
 								name='email'
 								type='email'
 								placeholder='your@email.com'
@@ -48,22 +50,22 @@ const LoginForm = () => {
 							<FormField
 								classField='authfield'
 								classLabel='authLabel'
-								labelTitle='Пароль '
+								labelTitle={t('loginPasswordLabel')}
 								name='password'
 								type='password'
-								placeholder='Пароль'
+								placeholder={t('loginPasswordLabel')}
 								isSup={true}
 							/>
 						</div>
 						<ActionButton
 							className='loginSubmitButton'
 							type='submit'
-							title='Увійти'
+							title={t('loginButton')}
 						/>
 						<NavigationButton
 							className='registerLink'
 							to='/register'
-							title='Реєстрація'
+							title={t('loginLink')}
 						/>
 					</Form>
 				</Formik>

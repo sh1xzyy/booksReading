@@ -13,7 +13,7 @@ const ActionButton = ({
 			className={s[className]}
 			type={type}
 			onClick={onClick}
-			disabled={false}
+			disabled={disabled}
 		>
 			{title}
 			{children}

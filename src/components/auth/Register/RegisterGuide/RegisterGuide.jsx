@@ -1,9 +1,12 @@
 import NavigationButton from '../../../common/NavigationButton/NavigationButton'
-import { sections } from '../readingSectionContent/readingSectionContent'
 import RegisterGuideSection from '../ReadingSection/ReadingSection'
+import { useSections } from '../readingSectionContent/readingSectionContent'
 import s from './RegisterGuide.module.css'
 
 const RegisterGuide = () => {
+	const sections = useSections()
+	console.log(sections)
+
 	return (
 		<div className={s.registerGuideWrapper}>
 			<h2 className={s.registerTitle}>Books Reading</h2>

@@ -7,6 +7,7 @@ import App from './components/App/App.jsx'
 import { Toaster } from 'react-hot-toast'
 import { store } from './redux/store.js'
 import './styles/index.css'
+import './i18n/languageInit.js'
 
 createRoot(document.getElementById('root')).render(
 	<Provider store={store}>

@@ -7,6 +7,7 @@ import { useAddBookReviewForm } from '../../../../features/books/addBookReviewFo
 import ActionButton from '../../../common/ActionButton/ActionButton'
 import FormField from '../../../common/form/FormField/FormField'
 import s from './AddBookReviewForm.module.css'
+import { useTranslation } from 'react-i18next'
 
 const AddBookReviewForm = () => {
 	const {
@@ -15,6 +16,7 @@ const AddBookReviewForm = () => {
 	} = useBookReviewModalContext()
 	const [bookRating, setBookRating] = useState(rating || 0)
 	const { handleSubmit } = useAddBookReviewForm(_id)
+	const { t } = useTranslation()
 
 	return (
 		<Formik
@@ -35,7 +37,7 @@ const AddBookReviewForm = () => {
 					<FormField
 						classField='bookReviewTextarea'
 						classLabel='bookReviewLabel'
-						labelTitle='Резюме'
+						labelTitle={t('bookReviewFormTextareaLabel')}
 						as='textarea'
 						name='feedback'
 						placeholder='...'
@@ -45,13 +47,13 @@ const AddBookReviewForm = () => {
 					<ActionButton
 						className='reviewGoBackButton'
 						type='button'
-						title='Назад'
+						title={t('backButton')}
 						onClick={() => setIsBookReviewModalOpen(false)}
 					/>
 					<ActionButton
 						className='reviewSaveButton'
 						type='submit'
-						title='Зберегти'
+						title={t('bookReviewFormSaveButton')}
 					/>
 				</div>
 			</Form>

@@ -5,10 +5,12 @@ import { useAddBookForm } from '../../../../features/books/addBookForm/useAddBoo
 import ActionButton from '../../../common/ActionButton/ActionButton'
 import FormField from '../../../common/form/FormField/FormField'
 import s from './AddBookForm.module.css'
+import { useTranslation } from 'react-i18next'
 
 const AddBookForm = () => {
 	const { initialValues, validationSchema, handleSubmit } = useAddBookForm()
 	const { setIsBookFormOpen } = useBookFormModalContext()
+	const { t } = useTranslation()
 
 	return (
 		<>
@@ -34,7 +36,7 @@ const AddBookForm = () => {
 							classLabel='libraryLabel'
 							name='title'
 							type='text'
-							labelTitle='Назва книги'
+							labelTitle={t('bookFormNameLabel')}
 							placeholder='...'
 						/>
 						<FormField
@@ -42,7 +44,7 @@ const AddBookForm = () => {
 							classLabel='libraryLabel'
 							name='author'
 							type='text'
-							labelTitle='Автор книги'
+							labelTitle={t('bookFormAuthorLabel')}
 							placeholder='...'
 						/>
 						<FormField
@@ -50,7 +52,7 @@ const AddBookForm = () => {
 							classLabel='libraryLabel'
 							name='publishYear'
 							type='number'
-							labelTitle='Рік випуску'
+							labelTitle={t('bookFormPublishYearLabel')}
 							placeholder='...'
 						/>
 						<FormField
@@ -58,14 +60,14 @@ const AddBookForm = () => {
 							classLabel='libraryLabel'
 							name='pagesTotal'
 							type='number'
-							labelTitle='Кількість сторінок'
+							labelTitle={t('bookFormPagesTotalLabel')}
 							placeholder='...'
 						/>
 					</div>
 					<ActionButton
 						className='addBookButton'
 						type='submit'
-						title='Додати'
+						title={t('addFormButton')}
 					/>
 				</Form>
 			</Formik>

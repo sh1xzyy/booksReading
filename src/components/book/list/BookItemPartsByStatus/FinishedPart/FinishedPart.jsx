@@ -3,14 +3,16 @@ import { MdOutlineStar } from 'react-icons/md'
 import { useBookReviewModalContext } from '../../../../../contexts/BookReviewModalContext/useBookReviewModalContext'
 import ActionButton from '../../../../common/ActionButton/ActionButton'
 import s from './FinishedPart.module.css'
+import { useTranslation } from 'react-i18next'
 
 const FinishedPart = ({ data: { _id, rating, feedback } }) => {
 	const { setModalData, setIsBookReviewModalOpen } = useBookReviewModalContext()
+	const { t } = useTranslation()
 
 	return (
 		<li className={s.ratingWrapper}>
 			<div className={s.infoRow}>
-				<span className={s.label}>Рейтинг:</span>
+				<span className={s.label}>{t('bookHeaderRatingShort')}:</span>
 				<Rating
 					initialValue={rating}
 					readonly={true}
@@ -21,7 +23,7 @@ const FinishedPart = ({ data: { _id, rating, feedback } }) => {
 			<ActionButton
 				className='summaryButton'
 				type='button'
-				title='Резюме'
+				title={t('bookReviewButton')}
 				onClick={() => {
 					setModalData({ _id, rating, feedback })
 					setIsBookReviewModalOpen(true)

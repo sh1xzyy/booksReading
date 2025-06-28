@@ -7,6 +7,7 @@ import CustomDatePicker from '../../custom/DatePicker/CustomDatePicker/CustomDat
 import CustomSelector from '../../custom/Selector/CustomSelector/CustomSelector'
 import ActionButton from '../../common/ActionButton/ActionButton'
 import ErrorMsg from '../../common/form/ErrorMsg/ErrorMsg'
+import { useTranslation } from 'react-i18next'
 import s from './TrainingForm.module.css'
 
 const TrainingForm = () => {
@@ -15,6 +16,7 @@ const TrainingForm = () => {
 	const { setIsTrainingFormModalOpen } = useTrainingFormModalContext()
 	const { initialValues, validationSchema, handleSubmit } =
 		useAddBookTrainingPlanForm()
+	const { t } = useTranslation()
 
 	return (
 		<>
@@ -28,7 +30,7 @@ const TrainingForm = () => {
 				<HiArrowLongLeft color='#ff6b08' size={24} />
 			</ActionButton>
 			<div className={s.trainingHeader}>
-				<h3 className={s.title}>Моє тренування</h3>
+				<h3 className={s.title}>{t('trainingFormTitle')}</h3>
 			</div>
 			<Formik
 				initialValues={initialValues}
@@ -43,7 +45,7 @@ const TrainingForm = () => {
 								hasUserDataChange={hasUserStartDataChange}
 								setHasUserDataChange={setHasUserStartDataChange}
 								name='startDate'
-								placeholder='Початок'
+								placeholder={t('trainingFormStartDate')}
 							/>
 							<ErrorMsg name='startDate' />
 						</div>
@@ -53,14 +55,14 @@ const TrainingForm = () => {
 								hasUserDataChange={hasUserEndDataChange}
 								setHasUserDataChange={setHasUserEndDataChange}
 								name='endDate'
-								placeholder='Завершення'
+								placeholder={t('trainingFormFinishDate')}
 							/>
 							<ErrorMsg name='endDate' />
 						</div>
 						<div className={s.fieldWrapper}>
 							<CustomSelector
 								name='books'
-								placeholder='Обрати книги з бібліотеки'
+								placeholder={t('trainingFormSelectBooksPlaceholder')}
 							/>
 							<ErrorMsg name='books' />
 						</div>
@@ -68,7 +70,7 @@ const TrainingForm = () => {
 					<ActionButton
 						className='addBookButton'
 						type='submit'
-						title='Додати'
+						title={t('addFormButton')}
 					/>
 				</Form>
 			</Formik>

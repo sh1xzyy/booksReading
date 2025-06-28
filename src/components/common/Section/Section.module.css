@@ -75,16 +75,13 @@
 	.formSection {
 		padding-bottom: 64px;
 	}
-	.goalSection {
-		padding-bottom: 0;
+	.goalSection,
+	.planningListSection,
+	.timerSection,
+	.chartSection {
+		padding: 0;
 	}
 	.trainingFormSection {
 		padding: 0 0 12px 0;
-	}
-	.planningListSection {
-		padding: 12px 0 20px 0;
-	}
-	.timerSection {
-		padding-bottom: 22px;
 	}
 }

@@ -1,24 +1,26 @@
+import { useTranslation } from 'react-i18next'
 import { useUserProgressContext } from '../../../../contexts/UserProgressContext/useUserProgressContext'
 import ActionButton from '../../../common/ActionButton/ActionButton'
 import s from './TrainingTimeoutModal.module.css'
 
 const TrainingTimeoutModal = ({ setIsTrainingTimeout }) => {
 	const { handleClearProgress } = useUserProgressContext()
+	const { t } = useTranslation()
 	return (
 		<>
 			<svg className={s.likeIcon} width={54} height={54}>
 				<use href='/icons/icons.svg#icon-like-palm'></use>
 			</svg>
 			<p className={s.text}>
-				Ти молодчина,
-				<br /> але потрібно швидше!
-				<br /> Наступного разу тобі все вдасться)
+				{t('trainingTimeoutModalText1')}
+				<br /> {t('trainingTimeoutModalText2')}
+				<br /> {t('trainingTimeoutModalText3')}
 			</p>
 			<div className={s.buttonsWrapper}>
 				<ActionButton
 					className='confirmButton'
 					type='button'
-					title='Новє тренування'
+					title={t('trainingTimeoutNewTrainButton')}
 					onClick={() => {
 						handleClearProgress()
 						setIsTrainingTimeout(false)
@@ -27,7 +29,7 @@ const TrainingTimeoutModal = ({ setIsTrainingTimeout }) => {
 				<ActionButton
 					className='cancelButton'
 					type='button'
-					title='Назад'
+					title={t('backButton')}
 					onClick={() => setIsTrainingTimeout(false)}
 				/>
 			</div>

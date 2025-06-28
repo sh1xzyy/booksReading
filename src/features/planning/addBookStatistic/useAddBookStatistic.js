@@ -4,10 +4,12 @@ import { useUserProgressContext } from '../../../contexts/UserProgressContext/us
 import { planningThunk } from '../../../redux/planning/operations'
 import { validationSchema } from './validationSchema'
 import { initialValues } from './initialValues'
+import { useTranslation } from 'react-i18next'
 
 export const useAddBookStatistic = () => {
 	const { handleAddResult } = useUserProgressContext()
 	const dispatch = useDispatch()
+	const { t } = useTranslation()
 
 	const handleSubmit = async (value, { resetForm }) => {
 		try {
@@ -15,7 +17,7 @@ export const useAddBookStatistic = () => {
 				planningThunk({ method: 'PATCH', body: { pages: value.pages } })
 			).unwrap()
 			handleAddResult(value)
-			toast.success('Ви успішно додали статистику!')
+			toast.success(`${t('addBookStatisticSuccessToast')}`)
 			resetForm()
 		} catch (error) {
 			toast.error(error.message)

@@ -15,6 +15,7 @@ import BookList from '../../components/book/list/BookList/BookList'
 import Section from '../../components/common/Section/Section'
 import Loader from '../../components/common/Loader/Loader'
 import s from './LibraryPage.module.css'
+import { useTranslation } from 'react-i18next'
 const ActionFormModal = lazy(() =>
 	import('../../components/modal/ActionFormModal/ActionFormModal')
 )
@@ -34,6 +35,7 @@ const LibraryPage = () => {
 	const isListEmpty = useSelector(selectIsListEmpty)
 	const { windowWidth } = useWindowWidth()
 	const isLoading = useGlobalLoader()
+	const { t } = useTranslation()
 
 	return (
 		<>
@@ -73,7 +75,7 @@ const LibraryPage = () => {
 								<Section className='bookListSection'>
 									<Container className='container'>
 										<BookList
-											sectionTitle='Прочитано'
+											sectionTitle={t('bookAlreadyReadSectionTitle')}
 											items={finishedReading}
 											status='finished'
 										/>
@@ -85,7 +87,7 @@ const LibraryPage = () => {
 								<Section className='bookListSection'>
 									<Container className='container'>
 										<BookList
-											sectionTitle='Читаю'
+											sectionTitle={t('bookReadingNowSectionTitle')}
 											items={currentlyReading}
 											status='reading'
 										/>
@@ -97,7 +99,7 @@ const LibraryPage = () => {
 								<Section className='bookListSection'>
 									<Container className='container'>
 										<BookList
-											sectionTitle='Маю намір прочитати'
+											sectionTitle={t('bookGoingToReadSectionTitle')}
 											items={goingToRead}
 											status='goingToReading'
 										/>
@@ -109,21 +111,21 @@ const LibraryPage = () => {
 						<NavigationButton
 							className='myTrainingButton'
 							to='/statistics'
-							title='Моє тренування'
+							title={t('libraryMyTrainingButton')}
 						/>
 					</>
 				)}
-			</div>
 
-			{windowWidth < 768 && !isBookFormOpen && !isListEmpty && (
-				<ActionButton
-					className='openFormButton'
-					type='button'
-					onClick={() => setIsBookFormOpen(true)}
-				>
-					<GoPlus color='#fff' size={24} />
-				</ActionButton>
-			)}
+				{windowWidth < 768 && !isBookFormOpen && !isListEmpty && (
+					<ActionButton
+						className='openFormButton'
+						type='button'
+						onClick={() => setIsBookFormOpen(true)}
+					>
+						<GoPlus color='#fff' size={24} />
+					</ActionButton>
+				)}
+			</div>
 		</>
 	)
 }

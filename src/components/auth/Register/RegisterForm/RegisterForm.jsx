@@ -3,11 +3,12 @@ import { useRegisterForm } from '../../../../features/auth/RegisterForm/useRegis
 import NavigationButton from '../../../common/NavigationButton/NavigationButton'
 import ActionButton from '../../../common/ActionButton/ActionButton'
 import FormField from '../../../common/form/FormField/FormField'
-import Loader from '../../../common/Loader/Loader'
+import { useTranslation } from 'react-i18next'
 import s from './RegisterForm.module.css'
 
 const RegisterForm = () => {
 	const { initialValues, validationSchema, handleSubmit } = useRegisterForm()
+	const { t } = useTranslation()
 
 	return (
 		<div className={s.formWrapper}>
@@ -26,7 +27,7 @@ const RegisterForm = () => {
 						<FormField
 							classField='authfield'
 							classLabel='authLabel'
-							labelTitle='Ім’я '
+							labelTitle={t('registerNameLabel')}
 							name='name'
 							type='text'
 							placeholder='...'
@@ -35,7 +36,7 @@ const RegisterForm = () => {
 						<FormField
 							classField='authfield'
 							classLabel='authLabel'
-							labelTitle='Електронна адреса '
+							labelTitle={t('registerEmailLabel')}
 							name='email'
 							type='email'
 							placeholder='your@email.com'
@@ -44,7 +45,7 @@ const RegisterForm = () => {
 						<FormField
 							classField='authfield'
 							classLabel='authLabel'
-							labelTitle='Пароль '
+							labelTitle={t('registerPasswordLabel')}
 							name='password'
 							type='password'
 							placeholder='...'
@@ -53,7 +54,7 @@ const RegisterForm = () => {
 						<FormField
 							classField='authfield'
 							classLabel='authLabel'
-							labelTitle='Підтвердити пароль '
+							labelTitle={t('registerConfirmPasswordLabel')}
 							name='confirmPassword'
 							type='password'
 							placeholder='...'
@@ -63,14 +64,14 @@ const RegisterForm = () => {
 					<ActionButton
 						className='registerSubmitButton'
 						type='submit'
-						title='Зареєструватися'
+						title={t('registerButton')}
 					/>
 					<p className={s.loginText}>
 						Вже з нами?&nbsp;
 						<NavigationButton
 							className='loginLink'
 							to='/login'
-							title='Увійти'
+							title={t('registerLink')}
 						/>
 					</p>
 				</Form>

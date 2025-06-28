@@ -1,5 +1,7 @@
 .goalHeader {
-	padding: 18px 30px;
+	text-align: center;
+	width: 100%;
+	padding: 18px 0;
 	box-shadow: 0 2px 3px 0 rgba(9, 30, 63, 0.1);
 	background-color: #b1b5c2;
 }
@@ -89,7 +91,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
 	.goalHeader {
-		padding: 18px 28px;
+		max-width: 275px;
 		box-shadow: 0 2px 3px 0 rgba(9, 30, 63, 0.1);
 		background-color: #b1b5c2;
 	}

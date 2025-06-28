@@ -1,9 +1,5 @@
-/* #region Common styles */
-
-/* #endregion Common styles */
-
 /* #region Google Button */
-.googleButton,
+.loginGoogleButton,
 .registerGoogleButton {
 	position: relative;
 	font-family: 'Roboto', sans-serif;
@@ -29,7 +25,7 @@
 		transform: translateY(-50%);
 	}
 	&:hover {
-		background-color: #f6f7fb;
+		background-color: #d8dce9;
 	}
 }
 
@@ -163,7 +159,7 @@
 	background-color: #f6f7fb;
 	transition: background-color 250ms linear;
 	&:hover {
-		background-color: #e0e5eb;
+		background-color: #d8dce9;
 	}
 }
 
@@ -406,7 +402,7 @@
 }
 /* #endregion Delete Button */
 
-/* region Add Results */
+/* #region Add Results */
 .addResultButton {
 	min-width: 240px;
 	height: 40px;
@@ -426,4 +422,4 @@
 		height: 42px;
 	}
 }
-/* endregion Add Results */
+/* #endregion Add Results */

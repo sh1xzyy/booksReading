@@ -62,6 +62,7 @@ img {
 
 body[data-scroll='scroll'] .scrollWrapper {
 	overflow-y: auto;
+	padding-right: 17px;
 }
 
 body[data-scroll='no-scroll'] .scrollWrapper {
