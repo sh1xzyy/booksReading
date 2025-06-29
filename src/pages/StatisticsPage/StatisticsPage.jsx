@@ -7,6 +7,8 @@ import { useUserProgressContext } from '../../contexts/UserProgressContext/useUs
 import { useGetTrainingBooks } from '../../features/planning/getTrainingBooks/useGetTrainingBooks'
 import { getLayoutClassByTraining } from '../../utils/trainingForm/getLayoutClassByTraining'
 import CustomRechart from '../../components/custom/Recharts/CustomRechart/CustomRechart'
+import { setChartClassByStatus } from '../../utils/statisticPage/setChartClassByStatus'
+import { setListClassByStatus } from '../../utils/statisticPage/setListClassByStatus'
 import { useWindowWidth } from '../../contexts/WindowWidthContext/useWindowWidth'
 import TrainingForm from '../../components/training/TrainingForm/TrainingForm'
 import ActionButton from '../../components/common/ActionButton/ActionButton'
@@ -52,7 +54,7 @@ const StatisticsPage = () => {
 				</Suspense>
 			)}
 
-			{isTrainingTimeout && (
+			{!isTrainingTimeout && (
 				<Suspense fallback={<Loader />}>
 					<TrainingResultModal type='failure' />
 				</Suspense>
@@ -102,7 +104,10 @@ const StatisticsPage = () => {
 						</Section>
 					)}
 
-					<Section className='planningListSection' moduleClass={s.listArea}>
+					<Section
+						className={setListClassByStatus(isTraining)}
+						moduleClass={s.listArea}
+					>
 						<Container className='innerContainer'>
 							<BookList
 								items={plannedBooks}
@@ -120,7 +125,10 @@ const StatisticsPage = () => {
 						</Container>
 					</Section>
 
-					<Section className='chartSection' moduleClass={s.chartArea}>
+					<Section
+						className={setChartClassByStatus(isTraining)}
+						moduleClass={s.chartArea}
+					>
 						<Container className='innerContainer'>
 							<CustomRechart />
 						</Container>

@@ -18,7 +18,7 @@ const ResultsPanelForm = () => {
 		<Formik
 			initialValues={initialValues}
 			onSubmit={handleSubmit}
-			validationSchema={validationSchema}
+			validationSchema={validationSchema(t)}
 		>
 			<Form className={s.form}>
 				<div className={s.fields}>
@@ -30,7 +30,7 @@ const ResultsPanelForm = () => {
 								setHasUserDataChange={setHasUserStartDataChange}
 								name='date'
 								className='resultsDatePicker'
-								placeholder='Date'
+								placeholder={t('resultsFormData')}
 							/>
 							<ErrorMsg name='date' />
 						</div>

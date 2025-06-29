@@ -8,7 +8,7 @@ const DefaultHeaderList = () => {
 			<li className={s.headerItem}>{t('bookHeaderNameTitle')}</li>
 			<li className={s.headerItem}>{t('bookHeaderAuthorTitle')}</li>
 			<li className={s.headerItem}>{t('bookHeaderPublishYearTitle')}</li>
-			<li className={s.headerItem}>{t('bookHeaderPagesTotalTitle')}.</li>
+			<li className={s.headerItem}>{t('bookHeaderPagesTotalTitle')}</li>
 		</>
 	)
 }

@@ -11,9 +11,11 @@ import s from './CustomRechart.module.css'
 import './CustomRechart.css'
 import { useSelector } from 'react-redux'
 import { selectPlannedData } from '../../../../redux/planning/selectors'
+import { useTranslation } from 'react-i18next'
 
 const CustomRechart = () => {
 	const { pagesPerDay, stats } = useSelector(selectPlannedData)
+	const { t } = useTranslation()
 
 	const now = new Date()
 	const fallbackData = [
@@ -36,7 +38,7 @@ const CustomRechart = () => {
 	return (
 		<div className={s.chartWrapper}>
 			<div className={s.chartDescription}>
-				<span className={s.chartTitle}>Кількість сторінок / День</span>
+				<span className={s.chartTitle}>{t('chartTitle')}</span>
 				<span className={s.pagesCount}>{pagesPerDay || 0}</span>
 			</div>
 
@@ -74,7 +76,7 @@ const CustomRechart = () => {
 				</LineChart>
 			</ResponsiveContainer>
 
-			<div className={s.hour}>Час</div>
+			<div className={s.hour}>{t('chartHour')}</div>
 		</div>
 	)
 }

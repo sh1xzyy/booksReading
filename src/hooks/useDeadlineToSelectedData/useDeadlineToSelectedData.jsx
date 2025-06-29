@@ -7,32 +7,39 @@ import { selectPlannedData } from '../../redux/planning/selectors'
 
 export const useDeadlineToSelectedData = () => {
 	const { setIsTrainingTimeout } = useUserTrainingProgressContext()
-	const { handleClearProgress } = useUserProgressContext()
-	const { endDate } = useSelector(selectPlannedData)
+	const { handleClearProgress, checkedItemList } = useUserProgressContext()
+	const { endDate, plannedBooks } = useSelector(selectPlannedData)
 	const [timeLeftToData, setTimeLeftToData] = useState(() =>
 		calculateTimeLeft(endDate)
 	)
 
-	const isTimeLeft = Object.values(timeLeftToData).every(value => value === 0)
-
-	useEffect(() => {
-		if (isTimeLeft) {
-			handleClearProgress()
-			setIsTrainingTimeout(true)
-		}
-	}, [isTimeLeft, handleClearProgress, setIsTrainingTimeout])
-
 	useEffect(() => {
 		const timer = setInterval(() => {
-			setTimeLeftToData(calculateTimeLeft(endDate))
+			const updatedTime = calculateTimeLeft(endDate)
+			setTimeLeftToData(updatedTime)
+
+			const isTimeLeft = Object.values(updatedTime).every(value => value === 0)
+
+			if (isTimeLeft) {
+				clearInterval(timer)
+
+				if (plannedBooks.length === checkedItemList.length) {
+					handleClearProgress()
+				} else {
+					handleClearProgress()
+					setIsTrainingTimeout(true)
+				}
+			}
 		}, 1000)
 
-		if (isTimeLeft) {
-			clearInterval(timer)
-		}
-
 		return () => clearInterval(timer)
-	}, [endDate, isTimeLeft])
+	}, [
+		endDate,
+		plannedBooks,
+		checkedItemList,
+		handleClearProgress,
+		setIsTrainingTimeout,
+	])
 
 	return { timeLeftToData }
 }

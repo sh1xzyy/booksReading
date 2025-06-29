@@ -1,11 +1,14 @@
 import * as Yup from 'yup'
 
-export const validationSchema = Yup.object().shape({
-	title: Yup.string().required('Введіть назву'),
-	author: Yup.string().required('Введіть автора'),
-	publishYear: Yup.string().required('Введіть рік'),
-	pagesTotal: Yup.number()
-		.typeError('Має бути число')
-		.min(1, 'Мінімум 1 сторінка')
-		.required('Введіть сторінки'),
-})
+export const validationSchema = t =>
+	Yup.object().shape({
+		title: Yup.string().required(`${t('addBookFormTitleValidation')}`),
+		author: Yup.string().required(`${t('addBookFormAuthorValidation')}`),
+		publishYear: Yup.string().required(
+			`${t('addBookFormPublishYearValidation')}`
+		),
+		pagesTotal: Yup.number()
+			.typeError(`${t('addBookFormPagesTotalTypeValidation')}`)
+			.min(1, `${t('addBookFormPagesTotalMinValidation')}`)
+			.required(`${t('addBookFormPagesTotalRequiredValidation')}`),
+	})

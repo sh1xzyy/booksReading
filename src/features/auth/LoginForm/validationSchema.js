@@ -1,9 +1,10 @@
 import * as Yup from 'yup'
 
-export const validationSchema = Yup.object({
-	email: Yup.string().required('Введіть свою електронну адресу'),
-	password: Yup.string()
-		.min(8, 'Мінімальна 8 літера')
-		.max(32, 'Максимум 32 літери')
-		.required('Введіть свій пароль'),
-})
+export const validationSchema = t =>
+	Yup.object({
+		email: Yup.string().required(`${t('loginEmailValidation')}`),
+		password: Yup.string()
+			.min(8, `${t('loginPasswordMinValidation')}`)
+			.max(32, `${t('loginPasswordMaxValidation')}`)
+			.required(`${t('loginPasswordRequiredValidation')}`),
+	})

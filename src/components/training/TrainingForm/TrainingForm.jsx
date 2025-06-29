@@ -35,7 +35,7 @@ const TrainingForm = () => {
 			<Formik
 				initialValues={initialValues}
 				onSubmit={handleSubmit}
-				validationSchema={validationSchema}
+				validationSchema={validationSchema(t)}
 			>
 				<Form className={s.form}>
 					<div className={s.fields}>

@@ -1,5 +1,6 @@
 export const calculateTimeLeft = endDate => {
 	const difference = new Date(endDate) - new Date()
+
 	if (difference <= 0) {
 		return { days: 0, hours: 0, minutes: 0, seconds: 0 }
 	}

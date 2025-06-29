@@ -16,7 +16,7 @@ const TrainingBookReadModal = ({ setIsBookReadModalOpen }) => {
 			<ActionButton
 				className='readyButton'
 				type='button'
-				title='Готово'
+				title={t('trainingBookReadModalButton')}
 				onClick={() => {
 					setIsBookReadModalOpen(false)
 				}}
