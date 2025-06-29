@@ -6,22 +6,20 @@ import {
 	CartesianGrid,
 	ReferenceLine,
 } from 'recharts'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import { selectPlannedData } from '../../../../redux/planning/selectors'
 import { CustomDot } from '../CustomDot/CustomDot'
 import s from './CustomRechart.module.css'
 import './CustomRechart.css'
-import { useSelector } from 'react-redux'
-import { selectPlannedData } from '../../../../redux/planning/selectors'
-import { useTranslation } from 'react-i18next'
 
 const CustomRechart = () => {
 	const { pagesPerDay, stats } = useSelector(selectPlannedData)
 	const { t } = useTranslation()
 
-	const now = new Date()
 	const fallbackData = [
 		{
-			time: now.toISOString().slice(0, 16).replace('T', ' '),
-			plan: pagesPerDay,
+			plan: 0,
 			fact: 0,
 		},
 	]
@@ -45,7 +43,6 @@ const CustomRechart = () => {
 			<ResponsiveContainer>
 				<LineChart data={transformedData}>
 					<CartesianGrid stroke='#b1b5c2' horizontal={false} vertical={true} />
-
 					<ReferenceLine y={0} stroke='#b1b5c2' strokeWidth={1} />
 					<Tooltip />
 					{transformedData && (

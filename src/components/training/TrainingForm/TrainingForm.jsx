@@ -39,25 +39,27 @@ const TrainingForm = () => {
 			>
 				<Form className={s.form}>
 					<div className={s.fields}>
-						<div className={s.fieldWrapper}>
-							<CustomDatePicker
-								className='trainingDatePicker'
-								hasUserDataChange={hasUserStartDataChange}
-								setHasUserDataChange={setHasUserStartDataChange}
-								name='startDate'
-								placeholder={t('trainingFormStartDate')}
-							/>
-							<ErrorMsg name='startDate' />
-						</div>
-						<div className={s.fieldWrapper}>
-							<CustomDatePicker
-								className='trainingDatePicker'
-								hasUserDataChange={hasUserEndDataChange}
-								setHasUserDataChange={setHasUserEndDataChange}
-								name='endDate'
-								placeholder={t('trainingFormFinishDate')}
-							/>
-							<ErrorMsg name='endDate' />
+						<div className={s.dataSelectWrapper}>
+							<div className={s.fieldWrapper}>
+								<CustomDatePicker
+									className='trainingDatePicker'
+									hasUserDataChange={hasUserStartDataChange}
+									setHasUserDataChange={setHasUserStartDataChange}
+									name='startDate'
+									placeholder={t('trainingFormStartDate')}
+								/>
+								<ErrorMsg name='startDate' />
+							</div>
+							<div className={s.fieldWrapper}>
+								<CustomDatePicker
+									className='trainingDatePicker'
+									hasUserDataChange={hasUserEndDataChange}
+									setHasUserDataChange={setHasUserEndDataChange}
+									name='endDate'
+									placeholder={t('trainingFormFinishDate')}
+								/>
+								<ErrorMsg name='endDate' />
+							</div>
 						</div>
 						<div className={s.fieldWrapper}>
 							<CustomSelector

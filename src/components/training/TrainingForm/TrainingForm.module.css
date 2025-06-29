@@ -14,13 +14,18 @@
 .form {
 	display: grid;
 	row-gap: 32px;
+	margin-top: 20px;
 }
 
 .fields {
 	display: grid;
+	row-gap: 20px;
+}
+
+.dataSelectWrapper {
+	display: grid;
 	grid-template-columns: 1fr;
 	row-gap: 20px;
-	margin-top: 20px;
 }
 
 .fieldWrapper {
@@ -29,35 +34,36 @@
 
 @media screen and (min-width: 768px) {
 	.form {
-		grid-template-columns: 483px auto;
+		grid-template-columns: 533px auto;
 		justify-content: space-between;
 		align-items: flex-end;
-	}
-	.fields {
-		display: grid;
-		grid-template-columns: repeat(2, 250px);
-		gap: 24px 40px;
 		margin-top: 28px;
 	}
-
-	.fieldWrapper:nth-child(3) {
+	.fields {
+		row-gap: 24px;
+	}
+	.fields > .fieldWrapper {
 		grid-column: 1 / span 2;
-		width: 473px;
+		width: 483px;
+	}
+	.dataSelectWrapper {
+		grid-template-columns: repeat(2, 250px);
+		column-gap: 40px;
 	}
 }
 
 @media screen and (min-width: 1280px) {
 	.form {
 		grid-template-columns: 715px auto;
-		justify-content: space-between;
-		align-items: flex-end;
 	}
 	.fields {
-		gap: 24px 44px;
-		margin-top: 24px;
+		grid-template-columns: 715px;
 	}
-
-	.fieldWrapper:nth-child(3) {
+	.dataSelectWrapper {
+		justify-content: flex-end;
+		column-gap: 44px;
+	}
+	.fields > .fieldWrapper {
 		width: 715px;
 	}
 }

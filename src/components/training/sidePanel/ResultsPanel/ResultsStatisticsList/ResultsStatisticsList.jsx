@@ -1,26 +1,29 @@
 import { useTranslation } from 'react-i18next'
-import { useUserProgressContext } from '../../../../../contexts/UserProgressContext/useUserProgressContext'
 import { datePrettier } from '../../../../../utils/sidePanel/resultsPanel/datePrettier'
+import { selectPlannedData } from '../../../../../redux/planning/selectors'
 import s from './ResultsStatisticsList.module.css'
+import { useSelector } from 'react-redux'
 
 const ResultsStatisticsList = () => {
-	const { statistics } = useUserProgressContext()
+	const { stats } = useSelector(selectPlannedData)
 	const { t } = useTranslation()
 	return (
 		<div className={s.statisticsWrapper}>
 			<h3 className={s.statisticsTitle}>{t('resultsStatisticTitle')}</h3>
 			<ul className={s.statisticsList}>
-				{statistics.map(({ date, time, pages }, index) => (
+				{stats.map(({ time, pagesCount }, index) => (
 					<li key={index}>
 						<ul className={s.statisticItemDetails}>
 							<li className={s.item}>
-								<span className={s.statDate}>{datePrettier(date)}</span>
+								<span className={s.statDate}>
+									{datePrettier(time.split(' ')[0])}
+								</span>
 							</li>
 							<li className={s.item}>
-								<span className={s.statTime}>{time}</span>
+								<span className={s.statTime}>{time.split(' ')[1]}</span>
 							</li>
 							<li className={s.item}>
-								<span className={s.statPages}>{pages}</span>
+								<span className={s.statPages}>{pagesCount}</span>
 								&nbsp;
 								<span className={s.statPagesLabel}>
 									{t('resultsPagesTitle')}

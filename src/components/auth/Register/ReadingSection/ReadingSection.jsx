@@ -1,6 +1,8 @@
 import s from './ReadingSection.module.css'
 
 const RegisterGuideSection = ({ section: { title, messages } }) => {
+	console.log(messages)
+
 	return (
 		<li className={s.readingSection}>
 			<h3 className={s.readingSectionTitle}>{title}</h3>

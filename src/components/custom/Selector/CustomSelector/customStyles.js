@@ -58,7 +58,7 @@ export const customStyles = {
 		pointerEvents: 'none',
 		position: 'absolute',
 		top: '50%',
-		right: '10px',
+		right: '2px',
 		transform: `translateY(-50%) ${
 			state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)'
 		}`,

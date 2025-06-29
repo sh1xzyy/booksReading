@@ -1,13 +1,11 @@
 import { useDispatch } from 'react-redux'
 import toast from 'react-hot-toast'
-import { useUserProgressContext } from '../../../contexts/UserProgressContext/useUserProgressContext'
 import { planningThunk } from '../../../redux/planning/operations'
 import { validationSchema } from './validationSchema'
 import { initialValues } from './initialValues'
 import { useTranslation } from 'react-i18next'
 
 export const useAddBookStatistic = () => {
-	const { handleAddResult } = useUserProgressContext()
 	const dispatch = useDispatch()
 	const { t } = useTranslation()
 
@@ -16,7 +14,6 @@ export const useAddBookStatistic = () => {
 			await dispatch(
 				planningThunk({ method: 'PATCH', body: { pages: value.pages } })
 			).unwrap()
-			handleAddResult(value)
 			toast.success(`${t('addBookStatisticSuccessToast')}`)
 			resetForm()
 		} catch (error) {

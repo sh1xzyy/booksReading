@@ -7,12 +7,12 @@ export const ua = {
 	loginButton: 'Увійти',
 	loginLink: 'Реєстрація',
 	registerQuoteTitle1: 'Допоможе вам',
-	registerQuoteTitle2: [
+	registerQuoteTitle2: 'Також ви зможете',
+	registerQuoteDesc1: [
 		'Швидше сформулювати свою ціль і розпочати читати',
 		'Пропорційно розподілити навантаження на кожний день',
 		'Відстежувати особистий успіх',
 	],
-	registerQuoteDesc1: 'Також ви зможете',
 	registerQuoteDesc2: [
 		'Формувати особисту думку незалежну від інших',
 		'Підвищити свої професійні якості опираючись на нові знання',
@@ -58,7 +58,7 @@ export const ua = {
 	trainingTimeoutModalText2: 'але потрібно швидше!',
 	trainingTimeoutModalText3: 'Наступного разу тобі все вдасться)',
 	trainingTimeoutNewTrainButton: 'Новє тренування',
-	trainingBookReadModalButton: 'Ready',
+	trainingBookReadModalButton: 'Готово',
 	goalToReadMyGoals: 'Моя мета прочитати',
 	goalToReadAmountBooks: 'Кількість книжок',
 	goalToReadAmountDays: 'Кількість днів',

@@ -54,7 +54,7 @@ const StatisticsPage = () => {
 				</Suspense>
 			)}
 
-			{!isTrainingTimeout && (
+			{isTrainingTimeout && (
 				<Suspense fallback={<Loader />}>
 					<TrainingResultModal type='failure' />
 				</Suspense>
@@ -66,7 +66,7 @@ const StatisticsPage = () => {
 				</Suspense>
 			)}
 
-			{windowWidth < 768 && !isTrainingFormModalOpen && (
+			{windowWidth < 768 && !isTrainingFormModalOpen && !isTraining && (
 				<ActionButton
 					className='openFormButton'
 					type='button'

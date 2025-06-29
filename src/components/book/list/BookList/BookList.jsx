@@ -12,7 +12,7 @@ const BookList = ({ sectionTitle, items, status }) => {
 	return (
 		<>
 			<h2 className={getTitleClassByStatus(s, status)}>{sectionTitle}</h2>
-			<BookListHeader status={status} />
+			{windowWidth >= 768 && <BookListHeader status={status} />}
 			<ul className={getBookListClassByStatus(s, status)}>
 				{items.length > 0 ? (
 					items.map(book => (

@@ -5,7 +5,6 @@ import s from './RegisterGuide.module.css'
 
 const RegisterGuide = () => {
 	const sections = useSections()
-	console.log(sections)
 
 	return (
 		<div className={s.registerGuideWrapper}>

@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import { checkboxToggle } from '../../features/userProgress/checkboxToggle'
+import { clearProgress } from '../../features/userProgress/clearProgress'
 import { startTraining } from '../../features/userProgress/startTraining'
 import { DEFAULT_PROGRESS } from '../../features/userProgress/constants'
-import { addResult } from '../../features/userProgress/addResult'
 import { UserProgressContext } from './useUserProgressContext'
-import { clearProgress } from '../../features/userProgress/clearProgress'
 
 export const UserProgressProvider = ({ children }) => {
 	const [userProgress, setUserProgress] = useState(DEFAULT_PROGRESS)
@@ -27,11 +26,6 @@ export const UserProgressProvider = ({ children }) => {
 		setUserProgress(updated)
 	}
 
-	const handleAddResult = value => {
-		const { updated } = addResult(value)
-		setUserProgress(updated)
-	}
-
 	const handleClearProgress = () => {
 		clearProgress()
 		setUserProgress(DEFAULT_PROGRESS)
@@ -45,7 +39,6 @@ export const UserProgressProvider = ({ children }) => {
 				hasFinishedTraining,
 				handleStartTraining,
 				handleCheckboxToggle,
-				handleAddResult,
 				handleClearProgress,
 			}}
 		>

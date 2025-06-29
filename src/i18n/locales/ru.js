@@ -57,7 +57,7 @@ const ru = {
 	trainingTimeoutModalText2: 'но нужно немного быстрее.',
 	trainingTimeoutModalText3: 'У тебя всё получится :)',
 	trainingTimeoutNewTrainButton: 'Новая тренировка',
-	trainingBookReadModalButton: 'Ready',
+	trainingBookReadModalButton: 'Готово',
 	goalToReadMyGoals: 'Мои цели',
 	goalToReadAmountBooks: 'Количество книг',
 	goalToReadAmountDays: 'Количество дней',
