@@ -30,6 +30,7 @@ const ru = {
 	bookFormPublishYearLabel: 'Год издания',
 	bookFormPagesTotalLabel: 'Кол-во стр',
 	addFormButton: 'Добавить',
+	addBookFormPublishYearLengthValidation: 'Год от 1000',
 	bookReviewFormTitle: 'Оцените книгу',
 	bookReviewFormTextareaLabel: 'Резюме',
 	bookReviewButton: 'Резюме',

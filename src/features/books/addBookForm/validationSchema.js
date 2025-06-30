@@ -4,11 +4,10 @@ export const validationSchema = t =>
 	Yup.object().shape({
 		title: Yup.string().required(`${t('addBookFormTitleValidation')}`),
 		author: Yup.string().required(`${t('addBookFormAuthorValidation')}`),
-		publishYear: Yup.string().required(
-			`${t('addBookFormPublishYearValidation')}`
-		),
-		pagesTotal: Yup.number()
-			.typeError(`${t('addBookFormPagesTotalTypeValidation')}`)
-			.min(1, `${t('addBookFormPagesTotalMinValidation')}`)
-			.required(`${t('addBookFormPagesTotalRequiredValidation')}`),
+		publishYear: Yup.string()
+			.min(4, `${t('addBookFormPublishYearLengthValidation')}`)
+			.required(`${t('addBookFormPublishYearValidation')}`),
+		pagesTotal: Yup.string()
+			.required(`${t('addBookFormPagesTotalRequiredValidation')}`)
+			.matches(/^\d+$/, `${t('addBookFormPagesTotalTypeValidation')}`),
 	})

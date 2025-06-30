@@ -41,6 +41,8 @@ const CustomDatePicker = ({
 	const onCalendarClose = () => setIsCalendarOpen(false)
 	const onCalendarOpen = () => setIsCalendarOpen(true)
 
+	const today = new Date()
+
 	return (
 		<>
 			<DatePicker
@@ -54,6 +56,7 @@ const CustomDatePicker = ({
 				onChange={handleDataChange}
 				onCalendarClose={onCalendarClose}
 				onCalendarOpen={onCalendarOpen}
+				minDate={today}
 			/>
 			{className === 'trainingDatePicker' && (
 				<svg className={s.calendar} width={17} height={17}>

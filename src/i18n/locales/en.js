@@ -30,6 +30,7 @@ const en = {
 	bookFormPublishYearLabel: 'Publication date',
 	bookFormPagesTotalLabel: 'Amount of pages',
 	addFormButton: 'Add',
+	addBookFormPublishYearLengthValidation: 'Year from 1000',
 	bookReviewFormTitle: 'Choose rating of the book',
 	bookReviewFormTextareaLabel: 'Resume',
 	bookReviewButton: 'Resume',
