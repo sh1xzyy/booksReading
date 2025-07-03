@@ -53,6 +53,10 @@ export const ua = {
 	bookReadingNowSectionTitle: 'Читаю',
 	bookGoingToReadSectionTitle: 'Маю намір прочитати',
 	libraryMyTrainingButton: 'Моє тренування',
+	trainingFormTitle: 'Моє тренування',
+	trainingFormStartDate: 'Початок',
+	trainingFormFinishDate: 'Завершення',
+	trainingFormSelectBooksPlaceholder: 'Обрати книги з бібліотеки',
 	trainingBookReadModalText1: 'Вітаю!',
 	trainingBookReadModalText2: 'Ще одна книга прочитана.',
 	trainingTimeoutModalText1: 'Ти молодчина,',
@@ -80,7 +84,7 @@ export const ua = {
 		'Якщо Ви вийдете з програми незбережені дані будуть втрачені',
 	logoutModalCancelButton: 'Відміна',
 	logoutModalGoOutButton: 'Вийти',
-	logoutButton: 'Выход',
+	logoutButton: 'Вихід',
 	googleAuthToast:
 		'Користувача не знайдено. Будь ласка, зареєструйтесь спочатку.',
 	loginSuccessToast: 'Ви успішно увійшли в систему!',
@@ -124,5 +128,6 @@ export const ua = {
 	addBookTrainingEndDateRequiredValidation: 'Оберіть дату початку',
 	addBookTrainingBooksMinValidation: 'Оберіть щонайменше одну книгу',
 	addBookTrainingBooksRequiredValidation: 'Оберіть книгу',
+	addBookTrainingDatesMustBeDifferentValidation: 'Дати повинні відрізнятися',
 }
 export default ua

@@ -82,6 +82,7 @@ const ru = {
 	logoutModalTitle:
 		'Внесённые изменения будут потеряны, если вы покинете приложение',
 	logoutModalCancelButton: 'Отмена',
+	logoutModalGoOutButton: 'Выйти',
 	logoutButton: 'Выйти',
 	googleAuthToast: 'Пользователь не найден. Сначала зарегистрируйтесь.',
 	loginSuccessToast: 'Вы успешно вошли!',
@@ -125,6 +126,7 @@ const ru = {
 	addBookTrainingEndDateRequiredValidation: 'Выберите дату начала',
 	addBookTrainingBooksMinValidation: 'Выберите как минимум одну книгу',
 	addBookTrainingBooksRequiredValidation: 'Выберите книгу',
+	addBookTrainingDatesMustBeDifferentValidation: 'Даты должны отличаться',
 }
 
 export default ru

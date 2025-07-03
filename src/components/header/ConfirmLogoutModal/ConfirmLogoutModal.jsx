@@ -26,7 +26,7 @@ const ConfirmLogoutModal = () => {
 				<ActionButton
 					className='confirmButton'
 					type='button'
-					title={t('logoutButton')}
+					title={t('logoutModalGoOutButton')}
 					onClick={() => {
 						handleLogout()
 						setIsConfirmLogoutModalOpen(false)

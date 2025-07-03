@@ -127,5 +127,6 @@ const en = {
 	addBookTrainingEndDateRequiredValidation: 'Select a start date',
 	addBookTrainingBooksMinValidation: 'Select at least one book',
 	addBookTrainingBooksRequiredValidation: 'Select a book',
+	addBookTrainingDatesMustBeDifferentValidation: 'Dates must differ',
 }
 export default en
