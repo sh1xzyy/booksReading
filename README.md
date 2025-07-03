@@ -41,7 +41,7 @@ A web application that helps users organize, schedule, and track their reading g
   - Ukrainian
   - Russian
 
-### 💻 Responsive Design
+### 💻 Adaptive Design
 - Fully optimized for desktops, tablets, and mobile devices.
 
 ## 🛠️ Technologies Used
